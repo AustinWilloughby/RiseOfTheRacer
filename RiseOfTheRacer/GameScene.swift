@@ -22,6 +22,10 @@ class GameScene: SKScene {
     //Actual camera node. Move this to change what is visible in the world.
     var sceneCamera: SKCameraNode?
     
+    //DeltaTime
+    var lastUpdateTime: CFTimeInterval = CFTimeInterval(0)
+    var deltaTime: CFTimeInterval = CFTimeInterval(0)
+    
     
     override func didMoveToView(view: SKView) {
         if !isCreated{
@@ -55,10 +59,10 @@ class GameScene: SKScene {
         
         node.parent!.position = CGPoint(x:(node.parent?.position.x)! - cameraPosInScene.x, y:(node.parent?.position.y)! - cameraPosInScene.y)
     }
-    
-    
+        
     override func update(currentTime: CFTimeInterval) {
-        /* Called before each frame is rendered */
+        deltaTime = currentTime - lastUpdateTime
+        lastUpdateTime = currentTime
     }
     
     
