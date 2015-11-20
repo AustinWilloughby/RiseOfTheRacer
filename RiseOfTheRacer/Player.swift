@@ -53,7 +53,7 @@ class Player: SKSpriteNode {
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
         /* Called when a touch begins */
         
-        myDebugLabel.text = "Touches: " + String(event?.allTouches()!.count)
+        //myDebugLabel.text = "Touches: " + String(event?.allTouches()!.count)
         
         if event?.allTouches()?.count > 1 && jumping == false{
             jumping = true
@@ -79,9 +79,9 @@ class Player: SKSpriteNode {
     func Update(){
         myDebugLabel.position = CGPoint(x: position.x, y: position.y + 100)
         
-        if position.y < 200 {
+        if position.y < 0 {
             vel.y = 0
-            position.y = 200
+            position.y = 0
             jumping = false
         }
         

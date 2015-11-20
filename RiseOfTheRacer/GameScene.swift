@@ -12,7 +12,6 @@
 import SpriteKit
 
 class GameScene: SKScene {
-<<<<<<< Updated upstream
     
     //To check if the camera exists
     var isCreated: Bool = false;
@@ -23,15 +22,23 @@ class GameScene: SKScene {
     //Actual camera node. Move this to change what is visible in the world.
     var sceneCamera: SKCameraNode?
     
+    //Player Instance
+    var player:Player?
+    
     //DeltaTime
     var lastUpdateTime: CFTimeInterval = CFTimeInterval(0)
     var deltaTime: CFTimeInterval = CFTimeInterval(0)
-    
+
+    override func didSimulatePhysics() {
+        if self.sceneCamera != nil{
+            self.focusOnCamera(self.sceneCamera!)
+        }
+    }
     
     override func didMoveToView(view: SKView) {
         if !isCreated{
             isCreated = true
-
+            
             self.anchorPoint = CGPoint(x: 0.5, y: 0.5)
             self.world = SKNode()
             self.world?.name = "world"
@@ -46,23 +53,6 @@ class GameScene: SKScene {
             self.overlay?.name = "overlay"
             addChild(self.overlay!)
         }
-    }
-    
-    
-    override func didSimulatePhysics() {
-        if self.sceneCamera != nil{
-            self.focusOnCamera(self.sceneCamera!)
-        }
-=======
-    
-    var player:Player?
-    
-    override func didMoveToView(view: SKView) {
-        /* Setup your scene here */
-        let myLabel = SKLabelNode(fontNamed:"Arial")
-        myLabel.text = " "
-        myLabel.fontSize = 45
-        myLabel.position = CGPoint(x:CGRectGetMidX(self.frame), y:CGRectGetMidY(self.frame) + 100)
         
         player = Player(pos: self.view!.center)
         self.addChild(player!)
@@ -76,7 +66,6 @@ class GameScene: SKScene {
     
     override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
         player!.running = false
->>>>>>> Stashed changes
     }
     
     func focusOnCamera(node: SKCameraNode){
@@ -86,12 +75,11 @@ class GameScene: SKScene {
     }
         
     override func update(currentTime: CFTimeInterval) {
-<<<<<<< Updated upstream
         deltaTime = currentTime - lastUpdateTime
         lastUpdateTime = currentTime
-=======
+        sceneCamera?.runAction(SKAction.moveTo(player!.position, duration: 0.0))
+        player!.myDebugLabel.text = String(sceneCamera?.position.x)
         player!.Update()
->>>>>>> Stashed changes
     }
     
     

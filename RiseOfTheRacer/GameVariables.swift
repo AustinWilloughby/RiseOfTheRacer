@@ -10,7 +10,7 @@ import Foundation
 
 struct GameVariables {
     static let tileSize:Int = 64
-    static var screenPosition:CGPoint = CGPoint(-200, -10)
+    //static var screenPosition:CGPoint = CGPoint(-200.0, -10.0)
 }
 
 enum CharacterState //Manages the state of the Character
