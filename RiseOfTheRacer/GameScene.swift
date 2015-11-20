@@ -12,6 +12,7 @@
 import SpriteKit
 
 class GameScene: SKScene {
+<<<<<<< Updated upstream
     
     //To check if the camera exists
     var isCreated: Bool = false;
@@ -52,6 +53,30 @@ class GameScene: SKScene {
         if self.sceneCamera != nil{
             self.focusOnCamera(self.sceneCamera!)
         }
+=======
+    
+    var player:Player?
+    
+    override func didMoveToView(view: SKView) {
+        /* Setup your scene here */
+        let myLabel = SKLabelNode(fontNamed:"Arial")
+        myLabel.text = " "
+        myLabel.fontSize = 45
+        myLabel.position = CGPoint(x:CGRectGetMidX(self.frame), y:CGRectGetMidY(self.frame) + 100)
+        
+        player = Player(pos: self.view!.center)
+        self.addChild(player!)
+        
+        self.addChild(player!.myDebugLabel)
+    }
+    
+    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+       player!.touchesBegan(touches, withEvent: event)
+    }
+    
+    override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
+        player!.running = false
+>>>>>>> Stashed changes
     }
     
     func focusOnCamera(node: SKCameraNode){
@@ -61,8 +86,12 @@ class GameScene: SKScene {
     }
         
     override func update(currentTime: CFTimeInterval) {
+<<<<<<< Updated upstream
         deltaTime = currentTime - lastUpdateTime
         lastUpdateTime = currentTime
+=======
+        player!.Update()
+>>>>>>> Stashed changes
     }
     
     
