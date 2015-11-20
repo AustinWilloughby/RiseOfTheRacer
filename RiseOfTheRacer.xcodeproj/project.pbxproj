@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		670AC1B81BFF7FD200838031 /* GamePiece.swift in Sources */ = {isa = PBXBuildFile; fileRef = 670AC1B71BFF7FD200838031 /* GamePiece.swift */; };
+		670AC1BA1BFF7FF500838031 /* Tile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 670AC1B91BFF7FF500838031 /* Tile.swift */; };
+		670AC1BC1BFF802200838031 /* Spike.swift in Sources */ = {isa = PBXBuildFile; fileRef = 670AC1BB1BFF802200838031 /* Spike.swift */; };
+		670AC1BE1BFF804200838031 /* Timer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 670AC1BD1BFF804200838031 /* Timer.swift */; };
+		670AC1C01BFF809000838031 /* MapHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 670AC1BF1BFF809000838031 /* MapHandler.swift */; };
+		670AC1C31BFF810100838031 /* GameVariables.swift in Sources */ = {isa = PBXBuildFile; fileRef = 670AC1C21BFF810100838031 /* GameVariables.swift */; };
 		679572711BFA38F000CF0088 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 679572701BFA38F000CF0088 /* AppDelegate.swift */; };
 		679572731BFA38F000CF0088 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 679572721BFA38F000CF0088 /* GameScene.sks */; };
 		679572751BFA38F000CF0088 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 679572741BFA38F000CF0088 /* GameScene.swift */; };
@@ -18,6 +24,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		670AC1B71BFF7FD200838031 /* GamePiece.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GamePiece.swift; sourceTree = "<group>"; };
+		670AC1B91BFF7FF500838031 /* Tile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tile.swift; sourceTree = "<group>"; };
+		670AC1BB1BFF802200838031 /* Spike.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Spike.swift; sourceTree = "<group>"; };
+		670AC1BD1BFF804200838031 /* Timer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Timer.swift; sourceTree = "<group>"; };
+		670AC1BF1BFF809000838031 /* MapHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapHandler.swift; sourceTree = "<group>"; };
+		670AC1C21BFF810100838031 /* GameVariables.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GameVariables.swift; path = ../GameVariables.swift; sourceTree = "<group>"; };
 		6795726D1BFA38F000CF0088 /* RiseOfTheRacer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RiseOfTheRacer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		679572701BFA38F000CF0088 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		679572721BFA38F000CF0088 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
@@ -41,6 +53,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		670AC1C11BFF809600838031 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				670AC1B71BFF7FD200838031 /* GamePiece.swift */,
+				670AC1C21BFF810100838031 /* GameVariables.swift */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
 		679572641BFA38F000CF0088 = {
 			isa = PBXGroup;
 			children = (
@@ -64,6 +85,7 @@
 				67A1B3E81BFCE130008DFED7 /* Model */,
 				67A1B3E71BFCE122008DFED7 /* VCs */,
 				679572721BFA38F000CF0088 /* GameScene.sks */,
+				670AC1C11BFF809600838031 /* Supporting Files */,
 				679572781BFA38F000CF0088 /* Main.storyboard */,
 				6795727B1BFA38F000CF0088 /* Assets.xcassets */,
 				6795727D1BFA38F000CF0088 /* LaunchScreen.storyboard */,
@@ -85,6 +107,10 @@
 			children = (
 				679572741BFA38F000CF0088 /* GameScene.swift */,
 				67A1B3EA1BFCE289008DFED7 /* Player.swift */,
+				670AC1B91BFF7FF500838031 /* Tile.swift */,
+				670AC1BB1BFF802200838031 /* Spike.swift */,
+				670AC1BD1BFF804200838031 /* Timer.swift */,
+				670AC1BF1BFF809000838031 /* MapHandler.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -161,8 +187,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				670AC1B81BFF7FD200838031 /* GamePiece.swift in Sources */,
+				670AC1C01BFF809000838031 /* MapHandler.swift in Sources */,
 				67A1B3EB1BFCE289008DFED7 /* Player.swift in Sources */,
+				670AC1BC1BFF802200838031 /* Spike.swift in Sources */,
+				670AC1C31BFF810100838031 /* GameVariables.swift in Sources */,
+				670AC1BA1BFF7FF500838031 /* Tile.swift in Sources */,
 				679572751BFA38F000CF0088 /* GameScene.swift in Sources */,
+				670AC1BE1BFF804200838031 /* Timer.swift in Sources */,
 				679572771BFA38F000CF0088 /* GameViewController.swift in Sources */,
 				679572711BFA38F000CF0088 /* AppDelegate.swift in Sources */,
 			);
