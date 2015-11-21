@@ -54,7 +54,7 @@ class GameScene: SKScene {
             addChild(self.overlay!)
         }
         
-        player = Player(pos: self.view!.center)
+        player = Player(pos: CGPoint(x: 0.0, y: 0.0))
         self.addChild(player!)
         
         self.addChild(player!.myDebugLabel)
