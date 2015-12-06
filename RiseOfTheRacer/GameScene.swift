@@ -11,7 +11,7 @@
 
 import SpriteKit
 
-class GameScene: SKScene {
+class GameScene: SKScene, SKPhysicsContactDelegate {
     
     //To check if the camera exists
     var isCreated: Bool = false;
@@ -24,6 +24,10 @@ class GameScene: SKScene {
     
     //Player Instance
     var player:Player?
+    
+    //Timer
+    var counter:Int = 0
+    var timer:NSTimer!
     
     //DeltaTime
     var lastUpdateTime: CFTimeInterval = CFTimeInterval(0)
@@ -54,8 +58,20 @@ class GameScene: SKScene {
             addChild(self.overlay!)
         }
         
-        player = Player(pos: CGPoint(x: 0.0, y: 0.0))
+        let tile:Tile = Tile(pos: CGPoint(x: 0.0, y: -75.0))
+        let tile1:Tile = Tile(pos: CGPoint(x: 50.0, y: -205.0))
+        let tile2:Tile = Tile(pos: CGPoint(x: 100.0, y: -255.0))
+        let tile3:Tile = Tile(pos: CGPoint(x: 150.0, y: -205.0))
+        
+        player = Player(pos: CGPoint(x: 0.0, y: 100.0))
+        
+        timer = NSTimer.scheduledTimerWithTimeInterval(0.0167, target: self, selector: "updateTime", userInfo: nil, repeats: true)
+        
         self.addChild(player!)
+        self.addChild(tile)
+        self.addChild(tile1)
+        self.addChild(tile2)
+        self.addChild(tile3)
         
         self.addChild(player!.myDebugLabel)
     }
@@ -78,10 +94,17 @@ class GameScene: SKScene {
         deltaTime = currentTime - lastUpdateTime
         lastUpdateTime = currentTime
         sceneCamera?.runAction(SKAction.moveTo(player!.position, duration: 0.0))
-        player!.myDebugLabel.text = String(sceneCamera?.position.x)
         player!.Update()
+        player!.myDebugLabel.text = String(format: "%02d:%02d:%02d", counter/3600, (counter/60)%60, counter%60)
     }
     
+    func updateTime(){
+        counter++
+    }
+    
+    func didBeginContact(contact: SKPhysicsContact) {
+        //player!.myDebugLabel.text = "!"
+    }
     
 //    override func didMoveToView(view: SKView) {
 //        /* Setup your scene here */

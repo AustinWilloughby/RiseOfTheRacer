@@ -10,7 +10,6 @@
 		670AC1B81BFF7FD200838031 /* GamePiece.swift in Sources */ = {isa = PBXBuildFile; fileRef = 670AC1B71BFF7FD200838031 /* GamePiece.swift */; };
 		670AC1BA1BFF7FF500838031 /* Tile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 670AC1B91BFF7FF500838031 /* Tile.swift */; };
 		670AC1BC1BFF802200838031 /* Spike.swift in Sources */ = {isa = PBXBuildFile; fileRef = 670AC1BB1BFF802200838031 /* Spike.swift */; };
-		670AC1BE1BFF804200838031 /* Timer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 670AC1BD1BFF804200838031 /* Timer.swift */; };
 		670AC1C01BFF809000838031 /* MapHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 670AC1BF1BFF809000838031 /* MapHandler.swift */; };
 		670AC1C31BFF810100838031 /* GameVariables.swift in Sources */ = {isa = PBXBuildFile; fileRef = 670AC1C21BFF810100838031 /* GameVariables.swift */; };
 		678B4B041C01115A00008434 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 678B4B031C01115A00008434 /* MenuViewController.swift */; };
@@ -29,7 +28,6 @@
 		670AC1B71BFF7FD200838031 /* GamePiece.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GamePiece.swift; sourceTree = "<group>"; };
 		670AC1B91BFF7FF500838031 /* Tile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tile.swift; sourceTree = "<group>"; };
 		670AC1BB1BFF802200838031 /* Spike.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Spike.swift; sourceTree = "<group>"; };
-		670AC1BD1BFF804200838031 /* Timer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Timer.swift; sourceTree = "<group>"; };
 		670AC1BF1BFF809000838031 /* MapHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapHandler.swift; sourceTree = "<group>"; };
 		670AC1C21BFF810100838031 /* GameVariables.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameVariables.swift; sourceTree = "<group>"; };
 		678B4B031C01115A00008434 /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
@@ -115,7 +113,6 @@
 				67A1B3EA1BFCE289008DFED7 /* Player.swift */,
 				670AC1B91BFF7FF500838031 /* Tile.swift */,
 				670AC1BB1BFF802200838031 /* Spike.swift */,
-				670AC1BD1BFF804200838031 /* Timer.swift */,
 				670AC1BF1BFF809000838031 /* MapHandler.swift */,
 			);
 			name = Model;
@@ -202,7 +199,6 @@
 				670AC1C31BFF810100838031 /* GameVariables.swift in Sources */,
 				670AC1BA1BFF7FF500838031 /* Tile.swift in Sources */,
 				679572751BFA38F000CF0088 /* GameScene.swift in Sources */,
-				670AC1BE1BFF804200838031 /* Timer.swift in Sources */,
 				679572771BFA38F000CF0088 /* GameViewController.swift in Sources */,
 				679572711BFA38F000CF0088 /* AppDelegate.swift in Sources */,
 			);

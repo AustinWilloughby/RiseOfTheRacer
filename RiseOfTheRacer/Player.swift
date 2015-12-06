@@ -8,10 +8,7 @@
 
 import SpriteKit
 
-class Player: SKSpriteNode {
-    var vel:CGPoint
-    var acl:CGPoint
-    
+class Player: SKSpriteNode, SKPhysicsContactDelegate {
     var runAcl:CGFloat
     var jumpForce:CGFloat
     var gravity:CGFloat
@@ -27,15 +24,13 @@ class Player: SKSpriteNode {
     init(pos:CGPoint)
     {
         self.playerTexture = SKTexture(imageNamed: "Player")
-        self.vel = CGPoint(x: 0.0, y: 0.0)
-        self.acl = CGPoint(x: 0.0, y: 0.0)
         
         self.running = false
         self.facingRight = true
-        self.jumping = true
+        self.jumping = false
         
-        self.runAcl = 0.03
-        self.jumpForce = 15.0
+        self.runAcl = 0.003
+        self.jumpForce = 0.30
         self.gravity = 0.4
         
         myDebugLabel = SKLabelNode(fontNamed:"Arial")
@@ -44,6 +39,10 @@ class Player: SKSpriteNode {
         let texture = playerTexture
         
         super.init(texture: texture, color: UIColor.clearColor(), size: texture.size())
+        
+        self.physicsBody = SKPhysicsBody(rectangleOfSize: CGSize(width: 0.60, height: 0.30))
+        self.physicsBody?.allowsRotation = false
+        self.physicsBody?.usesPreciseCollisionDetection = true
         
         self.position = pos
         self.xScale = 0.30
@@ -57,7 +56,7 @@ class Player: SKSpriteNode {
         
         if event?.allTouches()?.count > 1 && jumping == false{
             jumping = true
-            vel = CGPoint(x: vel.x, y: vel.y + jumpForce)
+            physicsBody?.applyForce(CGVector(dx: 0.0, dy: jumpForce))
         }
         
         else {
@@ -79,28 +78,22 @@ class Player: SKSpriteNode {
     func Update(){
         myDebugLabel.position = CGPoint(x: position.x, y: position.y + 100)
         
-        if position.y < 0 {
-            vel.y = 0
-            position.y = 0
+        if physicsBody?.velocity.dy < 0.1 {
             jumping = false
         }
         
         if running == true && facingRight == true {
-            acl = CGPoint(x: acl.x + runAcl, y: acl.y)
+            physicsBody?.applyForce(CGVector(dx: runAcl, dy: 0.0))
         }
             
         else if running == true && facingRight == false {
-            acl = CGPoint(x: acl.x - runAcl, y: acl.y)
+            physicsBody?.applyForce(CGVector(dx: -runAcl, dy: 0.0))
         }
             
         else {
-            vel = CGPoint(x: 0.0, y: vel.y)
-            acl = CGPoint(x: 0.0, y: acl.y)
+            physicsBody?.applyForce(CGVector(dx: 0.0, dy: 0.0))
+            physicsBody?.applyForce(CGVector(dx: 0.0, dy: 0.0))
         }
-        
-        self.vel = CGPoint(x: vel.x + acl.x, y: vel.y + acl.y)
-        self.position = CGPoint(x: vel.x + self.position.x, y: vel.y + self.position.y)
-        self.vel = CGPoint(x: vel.x / 1.05, y: vel.y - gravity)
     }
     
     required init?(coder aDecoder: NSCoder) {

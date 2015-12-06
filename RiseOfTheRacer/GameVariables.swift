@@ -13,6 +13,14 @@ struct GameVariables {
     //static var screenPosition:CGPoint = CGPoint(-200.0, -10.0)
 }
 
+struct ObjectType {
+    static let None: UInt32 = 0
+    static let All: UInt32 = UInt32.max
+    static let Player: UInt32 = 0b1          // 1
+    static let Tile: UInt32 = 0b10           // 2
+    static let Spike: UInt32 = 0b100         // 4
+}
+
 enum CharacterState //Manages the state of the Character
 {
     case standing

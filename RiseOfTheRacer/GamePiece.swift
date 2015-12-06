@@ -6,8 +6,21 @@
 //  Copyright © 2015 BigTipperGames. All rights reserved.
 //
 
+import SpriteKit
 import Foundation
 
-class GamePiece {
+class GamePiece: SKSpriteNode, SKPhysicsContactDelegate {
     
+    init(pos:CGPoint)
+    {
+        let texture = SKTexture(imageNamed: "Player")
+        
+        super.init(texture: texture, color: UIColor.clearColor(), size: texture.size())
+        
+        self.position = pos
+    }
+
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
 }
