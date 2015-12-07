@@ -11,9 +11,9 @@ import Foundation
 
 class GamePiece: SKSpriteNode, SKPhysicsContactDelegate {
     
-    init(pos:CGPoint)
+    init(pos:CGPoint, textureName:String)
     {
-        let texture = SKTexture(imageNamed: "Player")
+        let texture = SKTexture(imageNamed: textureName)
         
         super.init(texture: texture, color: UIColor.clearColor(), size: texture.size())
         

@@ -23,8 +23,48 @@ class MapHandler{
         
         var currentLine = input?.nextLine()
         var coords = currentLine?.characters.split{$0 == ","}.map(String.init)
-        var xSize:Int = Int(coords![0])!
-        var ySize:Int = Int(coords![1])!
+        let xSize:Int = Int(coords![0])!
+        let ySize:Int = Int(coords![1])!
+        
+        for var y = 0; y < ySize; ++y{
+            currentLine = input?.nextLine()
+            
+ 
+            for var x = 0; x < xSize; ++x{
+                
+                let index = currentLine?.startIndex.advancedBy(x)
+                switch currentLine![index!]{
+                    case "W":
+                        let newTile:Tile = Tile(pos: CGPoint(x: x * GameVariables.tileSize, y: y * GameVariables.tileSize), textureName: "Wall")
+                        tileArray[x][y] = newTile
+                        break
+                    case "P":
+                        let newTile:Tile = Tile(pos: CGPoint(x: x * GameVariables.tileSize, y: y * GameVariables.tileSize), textureName: "Platform")
+                        tileArray[x][y] = newTile
+                        break
+                    case "S":
+                        let newTile:Tile = Tile(pos: CGPoint(x: x * GameVariables.tileSize, y: y * GameVariables.tileSize), textureName: "Spike")
+                        tileArray[x][y] = newTile
+                        break
+                    case "<":
+                        let newTile:Tile = Tile(pos: CGPoint(x: x * GameVariables.tileSize, y: y * GameVariables.tileSize), textureName: "Spike")
+                        tileArray[x][y] = newTile
+                        break
+                    case ">":
+                        let newTile:Tile = Tile(pos: CGPoint(x: x * GameVariables.tileSize, y: y * GameVariables.tileSize), textureName: "Player")
+                        tileArray[x][y] = newTile
+                        break
+                    case "E":
+                        let newTile:Tile = Tile(pos: CGPoint(x: x * GameVariables.tileSize, y: y * GameVariables.tileSize), textureName: "Player")
+                        tileArray[x][y] = newTile
+                        break
+                    default:
+                        //tileArray[x][y] =
+                        break
+                }
+            }
+            
+        }
     }
     
     

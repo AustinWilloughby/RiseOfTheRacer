@@ -18,8 +18,19 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+<<<<<<< HEAD
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e3Y-db-e7m">
                                 <rect key="frame" x="37" y="172" width="527" height="210"/>
+=======
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Rise Of The Racer" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fXg-gN-ulz">
+                                <rect key="frame" x="110" y="65" width="381" height="87"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="45"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e3Y-db-e7m">
+                                <rect key="frame" x="53" y="239" width="527" height="121"/>
+>>>>>>> origin/master
                                 <constraints>
                                     <constraint firstAttribute="height" constant="121" id="AcQ-pN-GMU"/>
                                     <constraint firstAttribute="height" constant="210" id="IrW-yI-JQ6"/>
@@ -149,5 +160,115 @@
             </objects>
             <point key="canvasLocation" x="404" y="474"/>
         </scene>
+<<<<<<< HEAD
+=======
+        <!--Scores View Controller-->
+        <scene sceneID="XNz-s3-ti9">
+            <objects>
+                <viewController id="agh-Fx-fHb" customClass="ScoresViewController" customModule="RiseOfTheRacer" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="miL-HE-7K4"/>
+                        <viewControllerLayoutGuide type="bottom" id="xQn-P2-Hh4"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="pBJ-iX-f6O">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Scores go here..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rga-Zc-HTe">
+                                <rect key="frame" x="235" y="289" width="130" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5I1-Rk-IVF">
+                                <rect key="frame" x="283" y="346" width="34" height="30"/>
+                                <state key="normal" title="Back">
+                                    <color key="titleColor" red="1" green="0.066827616490000005" blue="0.12088968880000001" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="BackPressed:" destination="agh-Fx-fHb" eventType="touchUpInside" id="o5L-B9-oSF"/>
+                                    <action selector="backToMainScreen:" destination="agh-Fx-fHb" eventType="touchUpInside" id="6vL-ck-9IP"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="Rga-Zc-HTe" firstAttribute="centerX" secondItem="pBJ-iX-f6O" secondAttribute="centerX" id="23v-P5-gjY"/>
+                            <constraint firstItem="Rga-Zc-HTe" firstAttribute="centerX" secondItem="pBJ-iX-f6O" secondAttribute="centerX" id="8T3-eK-4HP"/>
+                            <constraint firstItem="Rga-Zc-HTe" firstAttribute="centerY" secondItem="pBJ-iX-f6O" secondAttribute="centerY" id="ALz-lh-2W0"/>
+                            <constraint firstItem="Rga-Zc-HTe" firstAttribute="centerX" secondItem="pBJ-iX-f6O" secondAttribute="centerX" id="DDa-mA-pwc"/>
+                            <constraint firstItem="5I1-Rk-IVF" firstAttribute="top" secondItem="Rga-Zc-HTe" secondAttribute="bottom" constant="30" id="JmJ-v2-2kr"/>
+                            <constraint firstItem="Rga-Zc-HTe" firstAttribute="centerY" secondItem="pBJ-iX-f6O" secondAttribute="centerY" id="KLe-Q2-dJX"/>
+                            <constraint firstItem="Rga-Zc-HTe" firstAttribute="centerX" secondItem="pBJ-iX-f6O" secondAttribute="centerX" id="L9p-Cq-Buq"/>
+                            <constraint firstItem="Rga-Zc-HTe" firstAttribute="centerX" secondItem="5I1-Rk-IVF" secondAttribute="centerX" id="LHF-m9-0NW"/>
+                            <constraint firstItem="5I1-Rk-IVF" firstAttribute="top" secondItem="Rga-Zc-HTe" secondAttribute="bottom" constant="32" id="O6y-9b-T3P"/>
+                            <constraint firstItem="Rga-Zc-HTe" firstAttribute="centerY" secondItem="pBJ-iX-f6O" secondAttribute="centerY" id="RR9-xv-Isz"/>
+                            <constraint firstItem="5I1-Rk-IVF" firstAttribute="top" secondItem="Rga-Zc-HTe" secondAttribute="bottom" constant="35" id="aay-8Q-dkz"/>
+                            <constraint firstItem="5I1-Rk-IVF" firstAttribute="centerX" secondItem="Rga-Zc-HTe" secondAttribute="centerX" id="gZ4-2Q-o56"/>
+                            <constraint firstItem="Rga-Zc-HTe" firstAttribute="centerX" secondItem="5I1-Rk-IVF" secondAttribute="centerX" id="n81-LD-oTg"/>
+                            <constraint firstItem="Rga-Zc-HTe" firstAttribute="centerY" secondItem="pBJ-iX-f6O" secondAttribute="centerY" id="yo9-q4-0ey"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="23v-P5-gjY"/>
+                                <exclude reference="8T3-eK-4HP"/>
+                                <exclude reference="ALz-lh-2W0"/>
+                                <exclude reference="DDa-mA-pwc"/>
+                                <exclude reference="KLe-Q2-dJX"/>
+                                <exclude reference="LHF-m9-0NW"/>
+                                <exclude reference="n81-LD-oTg"/>
+                                <exclude reference="yo9-q4-0ey"/>
+                                <exclude reference="JmJ-v2-2kr"/>
+                                <exclude reference="O6y-9b-T3P"/>
+                                <exclude reference="aay-8Q-dkz"/>
+                                <exclude reference="gZ4-2Q-o56"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=compact">
+                            <mask key="constraints">
+                                <include reference="ALz-lh-2W0"/>
+                                <include reference="DDa-mA-pwc"/>
+                                <exclude reference="L9p-Cq-Buq"/>
+                                <exclude reference="RR9-xv-Isz"/>
+                                <include reference="aay-8Q-dkz"/>
+                                <include reference="gZ4-2Q-o56"/>
+                            </mask>
+                        </variation>
+                        <variation key="widthClass=regular">
+                            <mask key="constraints">
+                                <include reference="23v-P5-gjY"/>
+                                <exclude reference="L9p-Cq-Buq"/>
+                                <include reference="LHF-m9-0NW"/>
+                                <exclude reference="RR9-xv-Isz"/>
+                                <include reference="yo9-q4-0ey"/>
+                                <include reference="JmJ-v2-2kr"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=compact-widthClass=regular">
+                            <mask key="constraints">
+                                <exclude reference="23v-P5-gjY"/>
+                                <include reference="8T3-eK-4HP"/>
+                                <exclude reference="ALz-lh-2W0"/>
+                                <exclude reference="DDa-mA-pwc"/>
+                                <include reference="KLe-Q2-dJX"/>
+                                <exclude reference="LHF-m9-0NW"/>
+                                <include reference="n81-LD-oTg"/>
+                                <exclude reference="yo9-q4-0ey"/>
+                                <exclude reference="JmJ-v2-2kr"/>
+                                <include reference="O6y-9b-T3P"/>
+                                <exclude reference="aay-8Q-dkz"/>
+                                <exclude reference="gZ4-2Q-o56"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <connections>
+                        <outlet property="BackButton" destination="5I1-Rk-IVF" id="5Zf-76-suB"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="EsL-bZ-vVE" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="404" y="1350"/>
+        </scene>
+>>>>>>> origin/master
     </scenes>
 </document>
