@@ -65,7 +65,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         player = Player(pos: CGPoint(x: 0.0, y: 100.0))
         
-        timer = NSTimer.scheduledTimerWithTimeInterval(0.0167, target: self, selector: "updateTime", userInfo: nil, repeats: true)
+        timer = NSTimer.scheduledTimerWithTimeInterval(0.01, target: self, selector: "updateTime", userInfo: nil, repeats: true)
         
         self.addChild(player!)
         self.addChild(tile)
@@ -81,7 +81,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
-        player!.running = false
+        player!.touchesEnded(touches, withEvent: event)
     }
     
     func focusOnCamera(node: SKCameraNode){
@@ -95,7 +95,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         lastUpdateTime = currentTime
         sceneCamera?.runAction(SKAction.moveTo(player!.position, duration: 0.0))
         player!.Update()
-        player!.myDebugLabel.text = String(format: "%02d:%02d:%02d", counter/3600, (counter/60)%60, counter%60)
+        //player!.myDebugLabel.text = String(format: "%02d:%02d:%02d", counter/6000, (counter/100)%60, counter%100)
     }
     
     func updateTime(){

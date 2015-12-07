@@ -11,13 +11,14 @@ import SpriteKit
 class Player: SKSpriteNode, SKPhysicsContactDelegate {
     var runAcl:CGFloat
     var jumpForce:CGFloat
-    var gravity:CGFloat
     
     var playerTexture:SKTexture
     
     var running:Bool
     var facingRight:Bool
     var jumping:Bool
+    
+    var touchList:[UITouch]
     
     var myDebugLabel:SKLabelNode
     
@@ -29,9 +30,10 @@ class Player: SKSpriteNode, SKPhysicsContactDelegate {
         self.facingRight = true
         self.jumping = false
         
-        self.runAcl = 0.003
+        self.touchList = []
+        
+        self.runAcl = 0.005
         self.jumpForce = 0.30
-        self.gravity = 0.4
         
         myDebugLabel = SKLabelNode(fontNamed:"Arial")
         myDebugLabel.fontSize = 45
@@ -52,26 +54,39 @@ class Player: SKSpriteNode, SKPhysicsContactDelegate {
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
         /* Called when a touch begins */
         
-        //myDebugLabel.text = "Touches: " + String(event?.allTouches()!.count)
+        touchList.append(touches.first!)
         
-        if event?.allTouches()?.count > 1 && jumping == false{
+        if touchList.count > 1 && jumping == false{
+            myDebugLabel.text = String("Jump")
             jumping = true
             physicsBody?.applyForce(CGVector(dx: 0.0, dy: jumpForce))
         }
         
         else {
-            let location = touches.first!.locationInNode(self)
+            let location = touchList.first!.locationInNode(self)
         
-            if location.x > CGRectGetMaxX(self.frame) - 100
+            if location.x > position.x
             {
+                myDebugLabel.text = String("Run Right")
                 facingRight = true
                 running = true
             }
-            else if location.x < CGRectGetMinX(self.frame) + 100
+            else if location.x < position.x
             {
+                myDebugLabel.text = String("Run Left")
                 facingRight = false
                 running = true
             }
+        }
+    }
+    
+    override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
+        if touchList.count > 0 {
+            touchList.removeLast()
+        }
+        
+        if touchList.count == 0 {
+            running = false
         }
     }
     
