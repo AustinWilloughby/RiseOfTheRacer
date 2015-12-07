@@ -58,10 +58,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             addChild(self.overlay!)
         }
         
-        let tile:Tile = Tile(pos: CGPoint(x: 0.0, y: -75.0))
-        let tile1:Tile = Tile(pos: CGPoint(x: 50.0, y: -205.0))
-        let tile2:Tile = Tile(pos: CGPoint(x: 100.0, y: -255.0))
-        let tile3:Tile = Tile(pos: CGPoint(x: 150.0, y: -205.0))
+        let tile:Tile = Tile(pos: CGPoint(x: 0.0, y: -75.0), textureName: "Player")
+        let tile1:Tile = Tile(pos: CGPoint(x: 50.0, y: -205.0), textureName: "Player")
+        let tile2:Tile = Tile(pos: CGPoint(x: 100.0, y: -255.0), textureName: "Player")
+        let tile3:Tile = Tile(pos: CGPoint(x: 150.0, y: -205.0), textureName: "Player")
         
         player = Player(pos: CGPoint(x: 0.0, y: 100.0))
         

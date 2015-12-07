@@ -10,10 +10,12 @@ import SpriteKit
 import Foundation
 
 class Tile: GamePiece {
+    private var tileID:Character
     
-    override init(pos:CGPoint)
+    
+    override init(pos:CGPoint, textureName:String)
     {
-        super.init(pos: pos)
+        super.init(pos: pos, textureName: textureName)
         self.physicsBody = SKPhysicsBody(rectangleOfSize: CGSize(width: 65.0, height: 80.0))
         self.physicsBody?.dynamic = false
     }
