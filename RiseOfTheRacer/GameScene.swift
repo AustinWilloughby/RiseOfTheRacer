@@ -60,7 +60,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             addChild(self.overlay!)
         }
         
-        
+        map.ReadMap(GameMaps.map1)
         
         let tile:Tile = Tile(pos: CGPoint(x: 0.0, y: -75.0), textureName: "Player",  id:"T")
         let tile1:Tile = Tile(pos: CGPoint(x: 50.0, y: -205.0), textureName: "Player",  id:"T")

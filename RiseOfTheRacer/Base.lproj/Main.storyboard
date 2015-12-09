@@ -9,7 +9,7 @@
         <!--Menu View Controller-->
         <scene sceneID="iSh-0S-X0w">
             <objects>
-                <viewController id="Me5-y7-3I3" customClass="MenuViewController" customModule="RiseOfTheRacer" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="Me5-y7-3I3" customClass="MenuViewController" customModule="Rise" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="s2H-pd-LWA"/>
                         <viewControllerLayoutGuide type="bottom" id="Xno-ex-jbr"/>
@@ -139,7 +139,7 @@
         <!--Game View Controller-->
         <scene sceneID="tXr-a1-R10">
             <objects>
-                <viewController id="BV1-FR-VrT" customClass="GameViewController" customModule="RiseOfTheRacer" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BV1-FR-VrT" customClass="GameViewController" customModule="Rise" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="8aa-yV-Osq"/>
                         <viewControllerLayoutGuide type="bottom" id="qHh-Mt-9TT"/>
@@ -157,7 +157,7 @@
         <!--Scores View Controller-->
         <scene sceneID="XNz-s3-ti9">
             <objects>
-                <viewController id="agh-Fx-fHb" customClass="ScoresViewController" customModule="RiseOfTheRacer" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="agh-Fx-fHb" customClass="ScoresViewController" customModule="Rise" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="miL-HE-7K4"/>
                         <viewControllerLayoutGuide type="bottom" id="xQn-P2-Hh4"/>
