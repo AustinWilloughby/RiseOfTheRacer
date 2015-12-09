@@ -45,6 +45,8 @@ class Player: SKSpriteNode, SKPhysicsContactDelegate {
         self.physicsBody = SKPhysicsBody(rectangleOfSize: CGSize(width: 0.60, height: 0.30))
         self.physicsBody?.allowsRotation = false
         self.physicsBody?.usesPreciseCollisionDetection = true
+        self.physicsBody?.categoryBitMask = ObjectType.Player
+        self.physicsBody?.contactTestBitMask = ObjectType.All
         
         self.position = pos
         self.xScale = 0.30
@@ -57,7 +59,7 @@ class Player: SKSpriteNode, SKPhysicsContactDelegate {
         touchList.append(touches.first!)
         
         if touchList.count > 1 && jumping == false{
-            myDebugLabel.text = String("Jump")
+            //myDebugLabel.text = String("Jumping")
             jumping = true
             physicsBody?.applyForce(CGVector(dx: 0.0, dy: jumpForce))
         }
@@ -67,13 +69,13 @@ class Player: SKSpriteNode, SKPhysicsContactDelegate {
         
             if location.x > position.x
             {
-                myDebugLabel.text = String("Run Right")
+                //myDebugLabel.text = String("Run Right")
                 facingRight = true
                 running = true
             }
             else if location.x < position.x
             {
-                myDebugLabel.text = String("Run Left")
+                //myDebugLabel.text = String("Run Left")
                 facingRight = false
                 running = true
             }
@@ -93,6 +95,8 @@ class Player: SKSpriteNode, SKPhysicsContactDelegate {
     func Update(){
         myDebugLabel.position = CGPoint(x: position.x, y: position.y + 100)
         
+        //myDebugLabel.text = String(touchList.count)
+        
         if physicsBody?.velocity.dy < 0.1 {
             jumping = false
         }
@@ -109,6 +113,10 @@ class Player: SKSpriteNode, SKPhysicsContactDelegate {
             physicsBody?.applyForce(CGVector(dx: 0.0, dy: 0.0))
             physicsBody?.applyForce(CGVector(dx: 0.0, dy: 0.0))
         }
+    }
+    
+    func didBeginContact(contact: SKPhysicsContact) {
+        myDebugLabel.text = "Collision"
     }
     
     required init?(coder aDecoder: NSCoder) {

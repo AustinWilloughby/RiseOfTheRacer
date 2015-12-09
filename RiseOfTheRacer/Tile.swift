@@ -18,6 +18,8 @@ class Tile: GamePiece {
         super.init(pos: pos, textureName: textureName)
         self.physicsBody = SKPhysicsBody(rectangleOfSize: CGSize(width: 65.0, height: 80.0))
         self.physicsBody?.dynamic = false
+        self.physicsBody?.categoryBitMask = ObjectType.Tile
+        self.physicsBody?.contactTestBitMask = ObjectType.All
     }
     
     required init?(coder aDecoder: NSCoder) {

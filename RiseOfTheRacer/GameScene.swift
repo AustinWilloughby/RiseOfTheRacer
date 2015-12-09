@@ -28,6 +28,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     //Timer
     var counter:Int = 0
     var timer:NSTimer!
+    var timerLabel:SKLabelNode = SKLabelNode(fontNamed:"Arial")
     
     //DeltaTime
     var lastUpdateTime: CFTimeInterval = CFTimeInterval(0)
@@ -60,16 +61,16 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             addChild(self.overlay!)
         }
         
-        
-        
         let tile:Tile = Tile(pos: CGPoint(x: 0.0, y: -75.0), textureName: "Player",  id:"T")
         let tile1:Tile = Tile(pos: CGPoint(x: 50.0, y: -205.0), textureName: "Player",  id:"T")
         let tile2:Tile = Tile(pos: CGPoint(x: 100.0, y: -255.0), textureName: "Player", id:"T")
         let tile3:Tile = Tile(pos: CGPoint(x: 150.0, y: -205.0), textureName: "Player", id:"T")
         
-        player = Player(pos: CGPoint(x: 0.0, y: 100.0))
+        player = Player(pos: CGPoint(x: 0.0, y: 200.0))
         
         timer = NSTimer.scheduledTimerWithTimeInterval(0.01, target: self, selector: "updateTime", userInfo: nil, repeats: true)
+        timerLabel.fontSize = 45
+        timerLabel.position = CGPoint(x: 0.0, y: 100.0)
         
         self.addChild(player!)
         self.addChild(tile)
@@ -78,6 +79,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         self.addChild(tile3)
         
         self.addChild(player!.myDebugLabel)
+        overlay!.addChild(timerLabel)
     }
     
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
@@ -99,7 +101,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         lastUpdateTime = currentTime
         sceneCamera?.runAction(SKAction.moveTo(player!.position, duration: 0.0))
         player!.Update()
-        //player!.myDebugLabel.text = String(format: "%02d:%02d:%02d", counter/6000, (counter/100)%60, counter%100)
+        timerLabel.text = String(format: "%02d:%02d:%02d", counter/6000, (counter/100)%60, counter%100)
     }
     
     func updateTime(){
@@ -107,7 +109,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     func didBeginContact(contact: SKPhysicsContact) {
-        //player!.myDebugLabel.text = "!"
+        player!.myDebugLabel.text = "!"
     }
     
 //    override func didMoveToView(view: SKView) {
