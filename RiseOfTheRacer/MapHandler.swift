@@ -35,31 +35,32 @@ class MapHandler{
                 let index = currentLine?.startIndex.advancedBy(x)
                 switch currentLine![index!]{
                     case "W":
-                        let newTile:Tile = Tile(pos: CGPoint(x: x * GameVariables.tileSize, y: y * GameVariables.tileSize), textureName: "Wall")
+                        let newTile:Tile = Tile(pos: CGPoint(x: x * GameVariables.tileSize, y: y * GameVariables.tileSize), textureName: "Wall", id:"W")
                         tileArray[x][y] = newTile
                         break
                     case "P":
-                        let newTile:Tile = Tile(pos: CGPoint(x: x * GameVariables.tileSize, y: y * GameVariables.tileSize), textureName: "Platform")
+                        let newTile:Tile = Tile(pos: CGPoint(x: x * GameVariables.tileSize, y: y * GameVariables.tileSize), textureName: "Platform", id:"P")
                         tileArray[x][y] = newTile
                         break
                     case "S":
-                        let newTile:Tile = Tile(pos: CGPoint(x: x * GameVariables.tileSize, y: y * GameVariables.tileSize), textureName: "Spike")
+                        let newTile:Tile = Tile(pos: CGPoint(x: x * GameVariables.tileSize, y: y * GameVariables.tileSize), textureName: "Spike", id:"S")
                         tileArray[x][y] = newTile
                         break
                     case "<":
-                        let newTile:Tile = Tile(pos: CGPoint(x: x * GameVariables.tileSize, y: y * GameVariables.tileSize), textureName: "Spike")
+                        let newTile:Tile = Tile(pos: CGPoint(x: x * GameVariables.tileSize, y: y * GameVariables.tileSize), textureName: "Spike", id:"<")
                         tileArray[x][y] = newTile
                         break
                     case ">":
-                        let newTile:Tile = Tile(pos: CGPoint(x: x * GameVariables.tileSize, y: y * GameVariables.tileSize), textureName: "Player")
+                        let newTile:Tile = Tile(pos: CGPoint(x: x * GameVariables.tileSize, y: y * GameVariables.tileSize), textureName: "Spike", id:">")
                         tileArray[x][y] = newTile
                         break
                     case "E":
-                        let newTile:Tile = Tile(pos: CGPoint(x: x * GameVariables.tileSize, y: y * GameVariables.tileSize), textureName: "Player")
+                        let newTile:Tile = Tile(pos: CGPoint(x: x * GameVariables.tileSize, y: y * GameVariables.tileSize), textureName: "Teleporter", id:"E")
                         tileArray[x][y] = newTile
                         break
                     default:
-                        //tileArray[x][y] =
+                        let newTile:Tile = Tile(pos: CGPoint(x: x * GameVariables.tileSize, y: y * GameVariables.tileSize), textureName: "EmptyTile", id:"B")
+                        tileArray[x][y] = newTile
                         break
                 }
             }

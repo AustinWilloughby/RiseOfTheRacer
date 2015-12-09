@@ -31,7 +31,7 @@
 		670AC1BF1BFF809000838031 /* MapHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapHandler.swift; sourceTree = "<group>"; };
 		670AC1C21BFF810100838031 /* GameVariables.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameVariables.swift; sourceTree = "<group>"; };
 		678B4B031C01115A00008434 /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
-		6795726D1BFA38F000CF0088 /* RiseOfTheRacer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RiseOfTheRacer.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		6795726D1BFA38F000CF0088 /* Rise.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Rise.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		679572701BFA38F000CF0088 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		679572721BFA38F000CF0088 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
 		679572741BFA38F000CF0088 /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
@@ -76,7 +76,7 @@
 		6795726E1BFA38F000CF0088 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				6795726D1BFA38F000CF0088 /* RiseOfTheRacer.app */,
+				6795726D1BFA38F000CF0088 /* Rise.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -135,7 +135,7 @@
 			);
 			name = RiseOfTheRacer;
 			productName = RiseOfTheRacer;
-			productReference = 6795726D1BFA38F000CF0088 /* RiseOfTheRacer.app */;
+			productReference = 6795726D1BFA38F000CF0088 /* Rise.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -316,7 +316,7 @@
 				INFOPLIST_FILE = RiseOfTheRacer/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.BigTipper.RiseOfTheRacer;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Rise;
 			};
 			name = Debug;
 		};
@@ -327,7 +327,7 @@
 				INFOPLIST_FILE = RiseOfTheRacer/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.BigTipper.RiseOfTheRacer;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Rise;
 			};
 			name = Release;
 		};
