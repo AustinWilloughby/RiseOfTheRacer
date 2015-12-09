@@ -22,6 +22,7 @@
 		6795727F1BFA38F000CF0088 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6795727D1BFA38F000CF0088 /* LaunchScreen.storyboard */; };
 		67A1B3EB1BFCE289008DFED7 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67A1B3EA1BFCE289008DFED7 /* Player.swift */; };
 		67E8661D1C0F5607005B8E2C /* StreamReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67E8661C1C0F5607005B8E2C /* StreamReader.swift */; };
+		67FB47F41C189212000BDA2D /* GameMaps.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67FB47F31C189212000BDA2D /* GameMaps.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +43,7 @@
 		679572801BFA38F000CF0088 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		67A1B3EA1BFCE289008DFED7 /* Player.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		67E8661C1C0F5607005B8E2C /* StreamReader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StreamReader.swift; sourceTree = "<group>"; };
+		67FB47F31C189212000BDA2D /* GameMaps.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameMaps.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,6 +90,7 @@
 				67A1B3E81BFCE130008DFED7 /* Model */,
 				67A1B3E71BFCE122008DFED7 /* VCs */,
 				679572721BFA38F000CF0088 /* GameScene.sks */,
+				67FB47EE1C188DE3000BDA2D /* Maps */,
 				670AC1C11BFF809600838031 /* Supporting Files */,
 				679572781BFA38F000CF0088 /* Main.storyboard */,
 				6795727B1BFA38F000CF0088 /* Assets.xcassets */,
@@ -116,6 +119,14 @@
 				670AC1BF1BFF809000838031 /* MapHandler.swift */,
 			);
 			name = Model;
+			sourceTree = "<group>";
+		};
+		67FB47EE1C188DE3000BDA2D /* Maps */ = {
+			isa = PBXGroup;
+			children = (
+				67FB47F31C189212000BDA2D /* GameMaps.swift */,
+			);
+			name = Maps;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -194,6 +205,7 @@
 				670AC1B81BFF7FD200838031 /* GamePiece.swift in Sources */,
 				670AC1C01BFF809000838031 /* MapHandler.swift in Sources */,
 				67A1B3EB1BFCE289008DFED7 /* Player.swift in Sources */,
+				67FB47F41C189212000BDA2D /* GameMaps.swift in Sources */,
 				670AC1BC1BFF802200838031 /* Spike.swift in Sources */,
 				678B4B041C01115A00008434 /* MenuViewController.swift in Sources */,
 				670AC1C31BFF810100838031 /* GameVariables.swift in Sources */,

@@ -18,22 +18,20 @@ class MapHandler{
     }
     
     
-    func ReadMap(mapFilePath: String){
-        let input = StreamReader(path: mapFilePath)
-        
-        var currentLine = input?.nextLine()
-        var coords = currentLine?.characters.split{$0 == ","}.map(String.init)
-        let xSize:Int = Int(coords![0])!
-        let ySize:Int = Int(coords![1])!
+    func ReadMap(map:[String]){
+        var currentLine = map[0]
+        var coords = currentLine.characters.split{$0 == ","}.map(String.init)
+        let xSize:Int = Int(coords[0])!
+        let ySize:Int = Int(coords[1])!
         
         for var y = 0; y < ySize; ++y{
-            currentLine = input?.nextLine()
+            currentLine = map[y + 1]
             
  
             for var x = 0; x < xSize; ++x{
                 
-                let index = currentLine?.startIndex.advancedBy(x)
-                switch currentLine![index!]{
+                let index = currentLine.startIndex.advancedBy(x)
+                switch currentLine[index]{
                     case "W":
                         let newTile:Tile = Tile(pos: CGPoint(x: x * GameVariables.tileSize, y: y * GameVariables.tileSize), textureName: "Wall", id:"W")
                         tileArray[x][y] = newTile
