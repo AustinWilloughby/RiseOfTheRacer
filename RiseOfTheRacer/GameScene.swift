@@ -34,7 +34,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var lastUpdateTime: CFTimeInterval = CFTimeInterval(0)
     var deltaTime: CFTimeInterval = CFTimeInterval(0)
     
-    let map:MapHandler = MapHandler()
+    //let map:MapHandler = MapHandler()
 
     override func didSimulatePhysics() {
         if self.sceneCamera != nil{
@@ -45,6 +45,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     override func didMoveToView(view: SKView) {
         if !isCreated{
             isCreated = true
+            
+            self.physicsWorld.contactDelegate = self
             
             self.anchorPoint = CGPoint(x: 0.5, y: 0.5)
             self.world = SKNode()
@@ -61,17 +63,18 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             addChild(self.overlay!)
         }
         
-        map.ReadMap(GameMaps.map1)
-        let tile:Tile = Tile(pos: CGPoint(x: 0.0, y: -75.0), textureName: "Player",  id:"T")
-        let tile1:Tile = Tile(pos: CGPoint(x: 50.0, y: -205.0), textureName: "Player",  id:"T")
-        let tile2:Tile = Tile(pos: CGPoint(x: 100.0, y: -255.0), textureName: "Player", id:"T")
-        let tile3:Tile = Tile(pos: CGPoint(x: 150.0, y: -205.0), textureName: "Player", id:"T")
+        //map.ReadMap(GameMaps.map1)
+        
+        let tile:Tile = Tile(pos: CGPoint(x: 0.0, y: -75.0), textureName: "Platform",  id:"T")
+        let tile1:Tile = Tile(pos: CGPoint(x: 50.0, y: -205.0), textureName: "Platform",  id:"T")
+        let tile2:Tile = Tile(pos: CGPoint(x: 100.0, y: -255.0), textureName: "Platform", id:"T")
+        let tile3:Tile = Tile(pos: CGPoint(x: 150.0, y: -205.0), textureName: "Platform", id:"T")
         
         player = Player(pos: CGPoint(x: 0.0, y: 200.0))
         
         timer = NSTimer.scheduledTimerWithTimeInterval(0.01, target: self, selector: "updateTime", userInfo: nil, repeats: true)
         timerLabel.fontSize = 45
-        timerLabel.position = CGPoint(x: 0.0, y: 100.0)
+        timerLabel.position = CGPoint(x: -400.0, y: 240.0)
         
         self.addChild(player!)
         self.addChild(tile)
@@ -80,7 +83,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         self.addChild(tile3)
         
         self.addChild(player!.myDebugLabel)
-        overlay!.addChild(timerLabel)
+        sceneCamera!.addChild(timerLabel)
     }
     
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
@@ -110,7 +113,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     func didBeginContact(contact: SKPhysicsContact) {
-        player!.myDebugLabel.text = "!"
+        player!.jumping = false
     }
     
 //    override func didMoveToView(view: SKView) {

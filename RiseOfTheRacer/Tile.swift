@@ -16,10 +16,12 @@ class Tile: GamePiece {
     {
         tileID = id
         super.init(pos: pos, textureName: textureName)
-        self.physicsBody = SKPhysicsBody(rectangleOfSize: CGSize(width: 65.0, height: 80.0))
+        self.physicsBody = SKPhysicsBody(rectangleOfSize: CGSize(width: 165.0, height: 205.0))
+        self.xScale = 0.4
+        self.yScale = 0.4
         self.physicsBody?.dynamic = false
         self.physicsBody?.categoryBitMask = ObjectType.Tile
-        self.physicsBody?.contactTestBitMask = ObjectType.All
+        self.physicsBody?.contactTestBitMask = ObjectType.Player
     }
     
     required init?(coder aDecoder: NSCoder) {

@@ -8,7 +8,7 @@
 
 import SpriteKit
 
-class Player: SKSpriteNode, SKPhysicsContactDelegate {
+class Player: SKSpriteNode {
     var runAcl:CGFloat
     var jumpForce:CGFloat
     
@@ -59,7 +59,6 @@ class Player: SKSpriteNode, SKPhysicsContactDelegate {
         touchList.append(touches.first!)
         
         if touchList.count > 1 && jumping == false{
-            //myDebugLabel.text = String("Jumping")
             jumping = true
             physicsBody?.applyForce(CGVector(dx: 0.0, dy: jumpForce))
         }
@@ -97,9 +96,7 @@ class Player: SKSpriteNode, SKPhysicsContactDelegate {
         
         //myDebugLabel.text = String(touchList.count)
         
-        if physicsBody?.velocity.dy < 0.1 {
-            jumping = false
-        }
+        myDebugLabel.text = String(jumping)
         
         if running == true && facingRight == true {
             physicsBody?.applyForce(CGVector(dx: runAcl, dy: 0.0))
@@ -113,10 +110,6 @@ class Player: SKSpriteNode, SKPhysicsContactDelegate {
             physicsBody?.applyForce(CGVector(dx: 0.0, dy: 0.0))
             physicsBody?.applyForce(CGVector(dx: 0.0, dy: 0.0))
         }
-    }
-    
-    func didBeginContact(contact: SKPhysicsContact) {
-        myDebugLabel.text = "Collision"
     }
     
     required init?(coder aDecoder: NSCoder) {
