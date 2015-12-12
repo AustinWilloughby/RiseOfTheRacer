@@ -108,12 +108,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         player!.jumping = false
         player!.physicsBody?.affectedByGravity = false
         player!.position.y += 10.0
-        player!.myDebugLabel.text = "!"
+        
+        //player!.myDebugLabel.text = "!"
     }
     
     func didEndContact(contact: SKPhysicsContact) {
         player!.physicsBody?.affectedByGravity = true
-        player!.myDebugLabel.text = "?"
+        
+        //player!.myDebugLabel.text = "?"
     }
     
 //    override func didMoveToView(view: SKView) {

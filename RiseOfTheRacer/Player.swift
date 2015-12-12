@@ -66,13 +66,13 @@ class Player: SKSpriteNode {
         else {
             let location = touchList.first!.locationInNode(self)
         
-            if location.x > position.x
+            if location.x > 0
             {
                 //myDebugLabel.text = String("Run Right")
                 facingRight = true
                 running = true
             }
-            else if location.x < position.x
+            else if location.x < 0
             {
                 //myDebugLabel.text = String("Run Left")
                 facingRight = false
@@ -82,8 +82,11 @@ class Player: SKSpriteNode {
     }
     
     override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
-        if touchList.count > 0 {
-            touchList.removeLast()
+        for var i = 0; i < touches.count; i++
+        {
+            if touchList.count > 0 {
+                touchList.removeLast()
+            }
         }
         
         if touchList.count == 0 {
@@ -94,7 +97,7 @@ class Player: SKSpriteNode {
     func Update(){
         myDebugLabel.position = CGPoint(x: position.x, y: position.y + 100)
         
-        //myDebugLabel.text = String(touchList.count)
+        myDebugLabel.text = String(touchList.count)
         
         //myDebugLabel.text = String(jumping)
         
@@ -109,6 +112,7 @@ class Player: SKSpriteNode {
         else {
             physicsBody?.velocity = CGVector(dx: 0.0, dy: (physicsBody?.velocity.dy)!)
         }
+        
     }
     
     required init?(coder aDecoder: NSCoder) {

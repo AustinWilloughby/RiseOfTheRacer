@@ -16,8 +16,12 @@ class Spike: Tile {
         
         self.physicsBody?.categoryBitMask = ObjectType.Spike
         
-        self.yScale = 0.25
-        self.position.y -= 15.0
+        if (id == "S")
+        {
+            self.yScale = 0.25
+            self.position.y -= 16.0
+        }
+        
     }
 
     required init?(coder aDecoder: NSCoder) {
