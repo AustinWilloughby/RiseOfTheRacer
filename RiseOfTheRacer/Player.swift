@@ -44,7 +44,7 @@ class Player: SKSpriteNode {
         
         self.physicsBody = SKPhysicsBody(rectangleOfSize: CGSize(width: 50.0, height: 50.0))
         self.physicsBody?.allowsRotation = false
-        self.physicsBody?.usesPreciseCollisionDetection = false
+        self.physicsBody?.usesPreciseCollisionDetection = true
         self.physicsBody?.categoryBitMask = ObjectType.Player
         self.physicsBody?.contactTestBitMask = ObjectType.All
         

@@ -106,10 +106,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     func didBeginContact(contact: SKPhysicsContact) {
         player!.jumping = false
+        player!.physicsBody?.affectedByGravity = false
+        player!.position.y += 10.0
         player!.myDebugLabel.text = "!"
     }
     
     func didEndContact(contact: SKPhysicsContact) {
+        player!.physicsBody?.affectedByGravity = true
         player!.myDebugLabel.text = "?"
     }
     

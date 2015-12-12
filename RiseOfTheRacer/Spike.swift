@@ -15,7 +15,9 @@ class Spike: Tile {
         super.init(pos: pos, textureName: textureName, id: id)
         
         self.physicsBody?.categoryBitMask = ObjectType.Spike
-        self.yScale = 0.5
+        
+        self.yScale = 0.25
+        self.position.y -= 15.0
     }
 
     required init?(coder aDecoder: NSCoder) {

@@ -24,7 +24,7 @@ class Tile: GamePiece {
         
         self.physicsBody = SKPhysicsBody(rectangleOfSize: CGSize(width: Double(GameVariables.tileSize), height: Double(GameVariables.tileSize)))
         self.physicsBody?.dynamic = false
-        self.physicsBody?.usesPreciseCollisionDetection = false
+        self.physicsBody?.usesPreciseCollisionDetection = true
         self.physicsBody?.categoryBitMask = ObjectType.Tile
         self.physicsBody?.contactTestBitMask = ObjectType.Player
     }
