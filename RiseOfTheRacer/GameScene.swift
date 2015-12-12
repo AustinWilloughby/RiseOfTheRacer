@@ -34,7 +34,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var lastUpdateTime: CFTimeInterval = CFTimeInterval(0)
     var deltaTime: CFTimeInterval = CFTimeInterval(0)
     
-    //let map:MapHandler = MapHandler()
+    let map:MapHandler = MapHandler()
 
     override func didSimulatePhysics() {
         if self.sceneCamera != nil{
@@ -69,22 +69,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         for tile in tiles{
             self.addChild(tile)
         }
-        let tile:Tile = Tile(pos: CGPoint(x: 0.0, y: -75.0), textureName: "Player",  id:"T")
-        let tile1:Tile = Tile(pos: CGPoint(x: 50.0, y: -205.0), textureName: "Player",  id:"T")
-        let tile2:Tile = Tile(pos: CGPoint(x: 100.0, y: -255.0), textureName: "Player", id:"T")
-        let tile3:Tile = Tile(pos: CGPoint(x: 150.0, y: -205.0), textureName: "Player", id:"T")
-        
-        player = Player(pos: CGPoint(x: 0.0, y: 200.0))
         
         timer = NSTimer.scheduledTimerWithTimeInterval(0.01, target: self, selector: "updateTime", userInfo: nil, repeats: true)
         timerLabel.fontSize = 45
         timerLabel.position = CGPoint(x: -400.0, y: 240.0)
         
+        player = Player(pos: CGPoint(x: 100.0, y: 200.0))
         self.addChild(player!)
-        self.addChild(tile)
-        self.addChild(tile1)
-        self.addChild(tile2)
-        self.addChild(tile3)
         
         self.addChild(player!.myDebugLabel)
         sceneCamera!.addChild(timerLabel)
