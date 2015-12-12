@@ -76,7 +76,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         timerLabel.verticalAlignmentMode = SKLabelVerticalAlignmentMode.Top
         timerLabel.fontSize = 45
         let screenSize: CGRect = UIScreen.mainScreen().bounds
-        timerLabel.position = CGPoint(x: -screenSize.width / 2 + 10, y: screenSize.height / 2 + 10)
+        timerLabel.position = CGPoint(x: -screenSize.width / 2 + 10, y: screenSize.height / 2 - 10)
         timerLabel.zPosition = 1
         
         player = Player(pos: CGPoint(x: 100.0, y: 200.0))
