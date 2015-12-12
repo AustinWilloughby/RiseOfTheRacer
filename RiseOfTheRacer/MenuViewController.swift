@@ -7,15 +7,26 @@
 //
 
 import UIKit
+import AVFoundation
 
 class MenuViewController: UIViewController {
 
     @IBOutlet weak var PlayButton: UIButton!
+    var audioPlayer = AVAudioPlayer()
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        let music = NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("RiseMusic", ofType: "m4a")!)
+        
+        do{
+            self.audioPlayer = try AVAudioPlayer(contentsOfURL: music)
+            audioPlayer.prepareToPlay()
+            audioPlayer.play()
+        }catch{
+            print("Error getting the audio file")
+        }
         
         PlayButton.backgroundColor = UIColor.clearColor()
         PlayButton.layer.cornerRadius = 5

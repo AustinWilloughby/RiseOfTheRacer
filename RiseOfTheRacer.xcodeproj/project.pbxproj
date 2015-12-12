@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6700D3801C1CBE060085EEA9 /* death.wav in Resources */ = {isa = PBXBuildFile; fileRef = 6700D37C1C1CBE060085EEA9 /* death.wav */; };
+		6700D3811C1CBE060085EEA9 /* jetpack.wav in Resources */ = {isa = PBXBuildFile; fileRef = 6700D37D1C1CBE060085EEA9 /* jetpack.wav */; };
+		6700D3821C1CBE060085EEA9 /* RiseMusic.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 6700D37E1C1CBE060085EEA9 /* RiseMusic.m4a */; };
+		6700D3831C1CBE060085EEA9 /* teleport.wav in Resources */ = {isa = PBXBuildFile; fileRef = 6700D37F1C1CBE060085EEA9 /* teleport.wav */; };
 		670AC1B81BFF7FD200838031 /* GamePiece.swift in Sources */ = {isa = PBXBuildFile; fileRef = 670AC1B71BFF7FD200838031 /* GamePiece.swift */; };
 		670AC1BA1BFF7FF500838031 /* Tile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 670AC1B91BFF7FF500838031 /* Tile.swift */; };
 		670AC1BC1BFF802200838031 /* Spike.swift in Sources */ = {isa = PBXBuildFile; fileRef = 670AC1BB1BFF802200838031 /* Spike.swift */; };
@@ -26,6 +30,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		6700D37C1C1CBE060085EEA9 /* death.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = death.wav; sourceTree = "<group>"; };
+		6700D37D1C1CBE060085EEA9 /* jetpack.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = jetpack.wav; sourceTree = "<group>"; };
+		6700D37E1C1CBE060085EEA9 /* RiseMusic.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = RiseMusic.m4a; sourceTree = "<group>"; };
+		6700D37F1C1CBE060085EEA9 /* teleport.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = teleport.wav; sourceTree = "<group>"; };
 		670AC1B71BFF7FD200838031 /* GamePiece.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GamePiece.swift; sourceTree = "<group>"; };
 		670AC1B91BFF7FF500838031 /* Tile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tile.swift; sourceTree = "<group>"; };
 		670AC1BB1BFF802200838031 /* Spike.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Spike.swift; sourceTree = "<group>"; };
@@ -57,6 +65,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6700D37B1C1CBD9A0085EEA9 /* Audio */ = {
+			isa = PBXGroup;
+			children = (
+				6700D37C1C1CBE060085EEA9 /* death.wav */,
+				6700D37D1C1CBE060085EEA9 /* jetpack.wav */,
+				6700D37E1C1CBE060085EEA9 /* RiseMusic.m4a */,
+				6700D37F1C1CBE060085EEA9 /* teleport.wav */,
+			);
+			name = Audio;
+			sourceTree = "<group>";
+		};
 		670AC1C11BFF809600838031 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
@@ -93,6 +112,7 @@
 				67FB47EE1C188DE3000BDA2D /* Maps */,
 				670AC1C11BFF809600838031 /* Supporting Files */,
 				679572781BFA38F000CF0088 /* Main.storyboard */,
+				6700D37B1C1CBD9A0085EEA9 /* Audio */,
 				6795727B1BFA38F000CF0088 /* Assets.xcassets */,
 				6795727D1BFA38F000CF0088 /* LaunchScreen.storyboard */,
 				679572801BFA38F000CF0088 /* Info.plist */,
@@ -187,10 +207,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6700D3801C1CBE060085EEA9 /* death.wav in Resources */,
+				6700D3821C1CBE060085EEA9 /* RiseMusic.m4a in Resources */,
+				6700D3811C1CBE060085EEA9 /* jetpack.wav in Resources */,
 				679572731BFA38F000CF0088 /* GameScene.sks in Resources */,
 				6795727F1BFA38F000CF0088 /* LaunchScreen.storyboard in Resources */,
 				6795727C1BFA38F000CF0088 /* Assets.xcassets in Resources */,
 				6795727A1BFA38F000CF0088 /* Main.storyboard in Resources */,
+				6700D3831C1CBE060085EEA9 /* teleport.wav in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
