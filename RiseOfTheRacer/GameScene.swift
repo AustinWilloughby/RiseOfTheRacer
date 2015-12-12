@@ -158,42 +158,49 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                     for tile in tiles!{
                         self.addChild(tile)
                     }
+                    player!.shouldResetPosition = true
                     break;
                 case 2?:
                     tiles = map.ReadMap(GameMaps.map3)
                     for tile in tiles!{
                         self.addChild(tile)
                     }
+                    player!.shouldResetPosition = true
                     break;
                 case 3?:
                     tiles = map.ReadMap(GameMaps.map4)
                     for tile in tiles!{
                         self.addChild(tile)
                     }
+                    player!.shouldResetPosition = true
                     break;
                 case 4?:
                     tiles = map.ReadMap(GameMaps.map5)
                     for tile in tiles!{
                         self.addChild(tile)
                     }
+                    player!.shouldResetPosition = true
                     break;
                 case 5?:
                     tiles = map.ReadMap(GameMaps.map6)
                     for tile in tiles!{
                         self.addChild(tile)
                     }
+                    player!.shouldResetPosition = true
                     break;
                 case 6?:
                     tiles = map.ReadMap(GameMaps.map7)
                     for tile in tiles!{
                         self.addChild(tile)
                     }
+                    player!.shouldResetPosition = true
                     break;
-                    default:
+                default:
                     tiles = map.ReadMap(GameMaps.map1)
                     for tile in tiles!{
                         self.addChild(tile)
                     }
+                    player!.shouldResetPosition = true
                     break;
                 }
         }
