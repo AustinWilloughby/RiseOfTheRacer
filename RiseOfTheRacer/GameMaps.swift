@@ -266,7 +266,7 @@ struct GameMaps {
         "W   PPPPW    P     W",
         "W>      WPPPP      W",
         "WPP     W          W",
-        "WPP   <PW      SSSSW",
+        "WPP   <PW       SSSW",
         "W>   PPPW     PPPPPW",
         "W      PW          W",
         "WSSP    W          W",
