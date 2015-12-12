@@ -59,19 +59,24 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         backgroundColor = SKColor.blackColor()
         
-        let tiles:[Tile] = map.ReadMap(GameMaps.map1)
+        let tiles:[Tile] = map.ReadMap(GameMaps.map2)
         for tile in tiles{
             self.addChild(tile)
         }
         
         timer = NSTimer.scheduledTimerWithTimeInterval(0.01, target: self, selector: "updateTime", userInfo: nil, repeats: true)
+        timerLabel.horizontalAlignmentMode = SKLabelHorizontalAlignmentMode.Left
+        timerLabel.verticalAlignmentMode = SKLabelVerticalAlignmentMode.Top
         timerLabel.fontSize = 45
-        timerLabel.position = CGPoint(x: -400.0, y: 240.0)
+        let screenSize: CGRect = UIScreen.mainScreen().bounds
+        timerLabel.position = CGPoint(x: -screenSize.width / 2 + 10, y: screenSize.height / 2 + 10)
+        timerLabel.zPosition = 1
         
         player = Player(pos: CGPoint(x: 100.0, y: 200.0))
         self.addChild(player!)
         
         self.addChild(player!.myDebugLabel)
+        sceneCamera.addChild(timerLabel)
         
         self.addChild(sceneCamera)
         self.camera = sceneCamera
@@ -117,34 +122,4 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         //player!.myDebugLabel.text = "?"
     }
-    
-//    override func didMoveToView(view: SKView) {
-//        /* Setup your scene here */
-//        let myLabel = SKLabelNode(fontNamed:"Chalkduster")
-//        myLabel.text = "Hello, World!"
-//        myLabel.fontSize = 45
-//        myLabel.position = CGPoint(x:CGRectGetMidX(self.frame), y:CGRectGetMidY(self.frame))
-//        
-//        self.addChild(myLabel)
-//    }
-//    
-//    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
-//       /* Called when a touch begins */
-//        
-//        for touch in touches {
-//            let location = touch.locationInNode(self)
-//            
-//            let sprite = SKSpriteNode(imageNamed:"Spaceship")
-//            
-//            sprite.xScale = 0.5
-//            sprite.yScale = 0.5
-//            sprite.position = location
-//            
-//            let action = SKAction.rotateByAngle(CGFloat(M_PI), duration:1)
-//            
-//            sprite.runAction(SKAction.repeatActionForever(action))
-//            
-//            self.addChild(sprite)
-//        }
-//    }
 }
