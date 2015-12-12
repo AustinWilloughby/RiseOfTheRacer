@@ -16,9 +16,7 @@ class Tile: GamePiece {
     {
         tileID = id
         super.init(pos: pos, textureName: textureName)
-        self.physicsBody = SKPhysicsBody(rectangleOfSize: CGSize(width: 165.0, height: 205.0))
-        self.xScale = 0.4
-        self.yScale = 0.4
+        self.physicsBody = SKPhysicsBody(rectangleOfSize: CGSize(width: GameVariables.tileSize, height: GameVariables.tileSize))
         self.physicsBody?.dynamic = false
         self.physicsBody?.categoryBitMask = ObjectType.Tile
         self.physicsBody?.contactTestBitMask = ObjectType.Player
