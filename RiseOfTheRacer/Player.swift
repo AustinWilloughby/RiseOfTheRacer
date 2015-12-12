@@ -32,8 +32,8 @@ class Player: SKSpriteNode {
         
         self.touchList = []
         
-        self.runAcl = 0.005
-        self.jumpForce = 0.30
+        self.runAcl = 100.0
+        self.jumpForce = 5000.0
         
         myDebugLabel = SKLabelNode(fontNamed:"Arial")
         myDebugLabel.fontSize = 45
@@ -42,15 +42,15 @@ class Player: SKSpriteNode {
         
         super.init(texture: texture, color: UIColor.clearColor(), size: texture.size())
         
-        self.physicsBody = SKPhysicsBody(rectangleOfSize: CGSize(width: 0.60, height: 0.30))
+        self.physicsBody = SKPhysicsBody(rectangleOfSize: CGSize(width: 50.0, height: 50.0))
         self.physicsBody?.allowsRotation = false
-        self.physicsBody?.usesPreciseCollisionDetection = true
+        self.physicsBody?.usesPreciseCollisionDetection = false
         self.physicsBody?.categoryBitMask = ObjectType.Player
         self.physicsBody?.contactTestBitMask = ObjectType.All
         
         self.position = pos
-        self.xScale = 0.30
-        self.yScale = 0.60
+        self.xScale = 0.40
+        self.yScale = 0.80
     }
     
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
@@ -96,7 +96,7 @@ class Player: SKSpriteNode {
         
         //myDebugLabel.text = String(touchList.count)
         
-        myDebugLabel.text = String(jumping)
+        //myDebugLabel.text = String(jumping)
         
         if running == true && facingRight == true {
             physicsBody?.applyForce(CGVector(dx: runAcl, dy: 0.0))
@@ -107,8 +107,7 @@ class Player: SKSpriteNode {
         }
             
         else {
-            physicsBody?.applyForce(CGVector(dx: 0.0, dy: 0.0))
-            physicsBody?.applyForce(CGVector(dx: 0.0, dy: 0.0))
+            physicsBody?.velocity = CGVector(dx: 0.0, dy: (physicsBody?.velocity.dy)!)
         }
     }
     

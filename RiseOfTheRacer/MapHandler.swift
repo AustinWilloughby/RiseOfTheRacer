@@ -43,7 +43,7 @@ class MapHandler{
                          tiles.append(tempTile)
                         break
                     case "S":
-                         tempTile = Tile(pos: CGPoint(x: x * GameVariables.tileSize, y: y * GameVariables.tileSize), textureName: "Spike", id:"S")
+                         tempTile = Spike(pos: CGPoint(x: x * GameVariables.tileSize, y: y * GameVariables.tileSize), textureName: "Spike", id:"S")
                          tiles.append(tempTile)
                         break
                     case "<":

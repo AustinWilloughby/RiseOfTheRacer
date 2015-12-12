@@ -48,6 +48,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             
             self.physicsWorld.contactDelegate = self
             
+            view.showsPhysics = true
+            
             self.anchorPoint = CGPoint(x: 0.5, y: 0.5)
             self.world = SKNode()
             self.world?.name = "world"
@@ -109,6 +111,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     func didBeginContact(contact: SKPhysicsContact) {
         player!.jumping = false
+        player!.myDebugLabel.text = "!"
+    }
+    
+    func didEndContact(contact: SKPhysicsContact) {
+        player!.myDebugLabel.text = "?"
     }
     
 //    override func didMoveToView(view: SKView) {
