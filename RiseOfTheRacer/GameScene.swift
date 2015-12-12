@@ -61,7 +61,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             addChild(self.overlay!)
         }
         
-        map.ReadMap(GameMaps.map1)
+        backgroundColor = SKColor.blackColor()
+        
+        let tiles:[Tile] = map.ReadMap(GameMaps.map1)
+        for tile in tiles{
+            self.addChild(tile)
+        }
         let tile:Tile = Tile(pos: CGPoint(x: 0.0, y: -75.0), textureName: "Player",  id:"T")
         let tile1:Tile = Tile(pos: CGPoint(x: 50.0, y: -205.0), textureName: "Player",  id:"T")
         let tile2:Tile = Tile(pos: CGPoint(x: 100.0, y: -255.0), textureName: "Player", id:"T")
