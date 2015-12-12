@@ -35,27 +35,27 @@ class MapHandler{
                 let tempTile:Tile
                 switch currentLine[index]{
                     case "W":
-                        tempTile = Tile(pos: CGPoint(x: x * GameVariables.tileSize, y: y * GameVariables.tileSize), textureName: "Wall", id:"W")
+                        tempTile = Tile(pos: CGPoint(x: x * GameVariables.tileSize, y: (ySize - y) * GameVariables.tileSize), textureName: "Wall", id:"W")
                          tiles.append(tempTile)
                         break
                     case "P":
-                        tempTile = Tile(pos: CGPoint(x: x * GameVariables.tileSize, y: y * GameVariables.tileSize), textureName: "Platform", id:"P")
+                        tempTile = Tile(pos: CGPoint(x: x * GameVariables.tileSize, y: (ySize - y) * GameVariables.tileSize), textureName: "Platform", id:"P")
                          tiles.append(tempTile)
                         break
                     case "S":
-                         tempTile = Spike(pos: CGPoint(x: x * GameVariables.tileSize, y: y * GameVariables.tileSize), textureName: "Spike", id:"S")
+                         tempTile = Spike(pos: CGPoint(x: x * GameVariables.tileSize, y: (ySize - y) * GameVariables.tileSize), textureName: "Spike", id:"S")
                          tiles.append(tempTile)
                         break
                     case "<":
-                         tempTile = Tile(pos: CGPoint(x: x * GameVariables.tileSize, y: y * GameVariables.tileSize), textureName: "Spike", id:"<")
+                         tempTile = Tile(pos: CGPoint(x: x * GameVariables.tileSize, y: (ySize - y) * GameVariables.tileSize), textureName: "Spike", id:"<")
                          tiles.append(tempTile)
                         break
                     case ">":
-                         tempTile = Tile(pos: CGPoint(x: x * GameVariables.tileSize, y: y * GameVariables.tileSize), textureName: "Spike", id:">")
+                         tempTile = Tile(pos: CGPoint(x: x * GameVariables.tileSize, y: (ySize - y) * GameVariables.tileSize), textureName: "Spike", id:">")
                          tiles.append(tempTile)
                         break
                     case "E":
-                         tempTile = Tile(pos: CGPoint(x: x * GameVariables.tileSize, y: y * GameVariables.tileSize), textureName: "Teleporter", id:"E")
+                         tempTile = Tile(pos: CGPoint(x: x * GameVariables.tileSize, y: (ySize - y) * GameVariables.tileSize), textureName: "Teleporter", id:"E")
                          tiles.append(tempTile)
                         break
                     default:
