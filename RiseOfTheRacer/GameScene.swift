@@ -20,7 +20,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     //Root of the interface. Attach interface elements (Timer) here.
     var overlay: SKNode?
     //Actual camera node. Move this to change what is visible in the world.
-    var sceneCamera: SKCameraNode?
+    let sceneCamera: SKCameraNode = SKCameraNode()
     
     //Player Instance
     var player:Player?
@@ -35,12 +35,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var deltaTime: CFTimeInterval = CFTimeInterval(0)
     
     let map:MapHandler = MapHandler()
-
-    override func didSimulatePhysics() {
-        if self.sceneCamera != nil{
-            self.focusOnCamera(self.sceneCamera!)
-        }
-    }
     
     override func didMoveToView(view: SKView) {
         if !isCreated{
@@ -55,9 +49,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             self.world?.name = "world"
             addChild(self.world!)
             
-            self.sceneCamera = SKCameraNode()
             self.camera?.name = "camera"
-            self.world?.addChild(self.sceneCamera!)
             
             self.overlay = SKNode()
             self.overlay?.zPosition = 10
@@ -80,7 +72,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         self.addChild(player!)
         
         self.addChild(player!.myDebugLabel)
-        sceneCamera!.addChild(timerLabel)
+        
+        self.addChild(sceneCamera)
+        self.camera = sceneCamera
     }
     
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
@@ -100,7 +94,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     override func update(currentTime: CFTimeInterval) {
         deltaTime = currentTime - lastUpdateTime
         lastUpdateTime = currentTime
-        sceneCamera?.runAction(SKAction.moveTo(player!.position, duration: 0.0))
+        let action = SKAction.moveTo(player!.position, duration: 0.25)
+        sceneCamera.runAction(action)
         player!.Update()
         timerLabel.text = String(format: "%02d:%02d:%02d", counter/6000, (counter/100)%60, counter%100)
     }
