@@ -25,6 +25,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     //Player Instance
     var player:Player?
     
+    //Level
+    var level:Int?
+    
+    //Tiles
+    var tiles:[Tile]?
+    
     //Timer
     var counter:Int = 0
     var timer:NSTimer!
@@ -44,6 +50,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             
             view.showsPhysics = true
             
+            level = 1
+            
             self.anchorPoint = CGPoint(x: 0.5, y: 0.5)
             self.world = SKNode()
             self.world?.name = "world"
@@ -59,8 +67,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         backgroundColor = SKColor.blackColor()
         
-        let tiles:[Tile] = map.ReadMap(GameMaps.map1)
-        for tile in tiles{
+        tiles = map.ReadMap(GameMaps.map1)
+        for tile in tiles!{
             self.addChild(tile)
         }
         
@@ -105,17 +113,94 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     func didBeginContact(contact: SKPhysicsContact) {
-        player!.jumping = false
-        player!.physicsBody?.affectedByGravity = false
-        player!.position.y += 10.0
+        var firstBody: SKPhysicsBody
+        var secondBody: SKPhysicsBody
+        if contact.bodyA.categoryBitMask < contact.bodyB.categoryBitMask {
+            firstBody = contact.bodyA
+            secondBody = contact.bodyB
+        } else {
+            firstBody = contact.bodyB
+            secondBody = contact.bodyA
+        }
         
-        //player!.myDebugLabel.text = "!"
+        if ((firstBody.categoryBitMask & ObjectType.Player != 0) &&
+            (secondBody.categoryBitMask & ObjectType.Tile != 0)) {
+                if (firstBody.node?.position.y > secondBody.node?.position.y){
+                    player!.jumping = false
+                    player!.physicsBody?.affectedByGravity = false
+                    player!.position.y += 30.0
+                }
+        }
+        
+        if ((firstBody.categoryBitMask & ObjectType.Player != 0) &&
+            (secondBody.categoryBitMask & ObjectType.Spike != 0)) {
+                if (firstBody.node?.position.y > secondBody.node?.position.y){
+                    player!.shouldResetPosition = true
+                }
+        }
+        
+        if ((firstBody.categoryBitMask & ObjectType.Player != 0) &&
+            (secondBody.categoryBitMask & ObjectType.Teleport != 0)) {
+                
+                for tile in tiles!{
+                    tile.removeFromParent()
+                }
+                tiles?.removeAll()
+                
+                switch(level)
+                {
+                case 1?:
+                    tiles = map.ReadMap(GameMaps.map2)
+                    for tile in tiles!{
+                        self.addChild(tile)
+                    }
+                    break;
+                case 2?:
+                    tiles = map.ReadMap(GameMaps.map3)
+                    for tile in tiles!{
+                        self.addChild(tile)
+                    }
+                    break;
+                case 3?:
+                    tiles = map.ReadMap(GameMaps.map4)
+                    for tile in tiles!{
+                        self.addChild(tile)
+                    }
+                    break;
+                case 4?:
+                    tiles = map.ReadMap(GameMaps.map5)
+                    for tile in tiles!{
+                        self.addChild(tile)
+                    }
+                    break;
+                case 5?:
+                    tiles = map.ReadMap(GameMaps.map6)
+                    for tile in tiles!{
+                        self.addChild(tile)
+                    }
+                    break;
+                case 6?:
+                    tiles = map.ReadMap(GameMaps.map7)
+                    for tile in tiles!{
+                        self.addChild(tile)
+                    }
+                    break;
+                    default:
+                    tiles = map.ReadMap(GameMaps.map1)
+                    for tile in tiles!{
+                        self.addChild(tile)
+                    }
+                    break;
+                }
+        }
+        
+        //player!.myDebugLabel.text = "BeganContact"
     }
     
     func didEndContact(contact: SKPhysicsContact) {
         player!.physicsBody?.affectedByGravity = true
         
-        //player!.myDebugLabel.text = "?"
+        //player!.myDebugLabel.text = "EndedContact"
     }
     
 //    override func didMoveToView(view: SKView) {

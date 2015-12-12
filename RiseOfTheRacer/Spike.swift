@@ -16,14 +16,24 @@ class Spike: Tile {
         
         self.physicsBody?.categoryBitMask = ObjectType.Spike
         
-        if (id == "S")
+        if id == "S"
         {
+            
             self.yScale = 0.25
             self.position.y -= 16.0
         }
+        if id == "<"
+        {
+            print("!")
+            runAction(SKAction.rotateToAngle(90.0, duration: 0, shortestUnitArc: true))
+        }
+        if id == ">"
+        {
+            runAction(SKAction.rotateToAngle(90.0, duration: 0, shortestUnitArc: true))
+        }
         
     }
-
+    
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }

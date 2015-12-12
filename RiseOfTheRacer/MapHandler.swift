@@ -55,7 +55,7 @@ class MapHandler{
                          tiles.append(tempTile)
                         break
                     case "E":
-                         tempTile = Tile(pos: CGPoint(x: x * GameVariables.tileSize, y: (ySize - y) * GameVariables.tileSize), textureName: "Teleporter", id:"E")
+                         tempTile = Teleporter(pos: CGPoint(x: x * GameVariables.tileSize, y: (ySize - y) * GameVariables.tileSize), textureName: "Teleporter", id:"E")
                          tiles.append(tempTile)
                         break
                     default:
