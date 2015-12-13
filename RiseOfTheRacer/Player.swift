@@ -74,8 +74,8 @@ class Player: SKSpriteNode {
         
         self.position = pos
         
-        self.xScale = 0.40
-        self.yScale = 0.80
+        self.xScale = 0.4
+        self.yScale = 0.8
     }
     
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
