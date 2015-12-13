@@ -50,7 +50,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             
             view.showsPhysics = true
             
-            level = 1
+            level = 0
             
             self.anchorPoint = CGPoint(x: 0.5, y: 0.5)
             self.world = SKNode()
@@ -66,7 +66,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
         
         backgroundColor = SKColor.blackColor()
-        tiles = map.ReadMap(GameMaps.map1)
+        tiles = map.ReadMap(GameMaps.menuMap)
         for tile in tiles!{
             self.addChild(tile)
         }
@@ -153,55 +153,62 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 
                 switch(level)
                 {
+                case 0?:
+                    tiles = map.ReadMap(GameMaps.menuMap)
+                    for tile in tiles!{
+                        self.addChild(tile)
+                    }
+                    player!.shouldResetPosition = true
+                    break
                 case 1?:
                     tiles = map.ReadMap(GameMaps.map2)
                     for tile in tiles!{
                         self.addChild(tile)
                     }
                     player!.shouldResetPosition = true
-                    break;
+                    break
                 case 2?:
                     tiles = map.ReadMap(GameMaps.map3)
                     for tile in tiles!{
                         self.addChild(tile)
                     }
                     player!.shouldResetPosition = true
-                    break;
+                    break
                 case 3?:
                     tiles = map.ReadMap(GameMaps.map4)
                     for tile in tiles!{
                         self.addChild(tile)
                     }
                     player!.shouldResetPosition = true
-                    break;
+                    break
                 case 4?:
                     tiles = map.ReadMap(GameMaps.map5)
                     for tile in tiles!{
                         self.addChild(tile)
                     }
                     player!.shouldResetPosition = true
-                    break;
+                    break
                 case 5?:
                     tiles = map.ReadMap(GameMaps.map6)
                     for tile in tiles!{
                         self.addChild(tile)
                     }
                     player!.shouldResetPosition = true
-                    break;
+                    break
                 case 6?:
                     tiles = map.ReadMap(GameMaps.map7)
                     for tile in tiles!{
                         self.addChild(tile)
                     }
                     player!.shouldResetPosition = true
-                    break;
+                    break
                 default:
                     tiles = map.ReadMap(GameMaps.map1)
                     for tile in tiles!{
                         self.addChild(tile)
                     }
                     player!.shouldResetPosition = true
-                    break;
+                    break
                 }
         }
         

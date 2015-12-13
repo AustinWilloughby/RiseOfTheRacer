@@ -9,6 +9,28 @@
 import Foundation
 
 struct GameMaps {
+    static let menuMap:[String] =
+    [
+        "37,14",
+        "WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW",
+        "WE----------------------W-----------W", //leaderboards
+        "WPPP--------------------W-----------W",
+        "W>--------X-------------W--------P--W", //settings?
+        "WPPPPPPPPPPPPPP-----PP--W------PSW--W",
+        "WWWWWWWWWWWWWWP-----PW--W-PSP---WW--W",
+        "W>-----------WPSSSSSPW--W------<W---W",
+        "W------S-----WWWWWWWWW--WPP----<W---W",
+        "W-PPPPPPPPP--------------------PW---W",
+        "WEW-------P-------------------PPWPP-W", //easy
+        "WWW>------PPPP---PPPPPPPPPP---PW>---W",
+        "WE---------------W>-----------PWE---W", //medium | hard plus
+        "WPPPPPPSSPPPPPPPPWE--PS-----SSPWWSPPW", //hard
+        "WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW",
+        
+    ]
+    
+    
+    
     static let tutMap1:[String] =
     [
         "28,8",
