@@ -54,7 +54,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             
             self.physicsWorld.contactDelegate = self
             
-            view.showsPhysics = true
+            //view.showsPhysics = true
             
             self.anchorPoint = CGPoint(x: 0.5, y: 0.5)
             self.world = SKNode()
@@ -191,6 +191,18 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                     }
                     player!.shouldResetPosition = true
                 }
+        }
+        
+        if ((firstBody.categoryBitMask & ObjectType.Player != 0) &&
+            (secondBody.categoryBitMask & ObjectType.Spike2 != 0)) {
+                do {
+                    self.audioPlayer = try AVAudioPlayer(contentsOfURL: deathNoise)
+                    audioPlayer.prepareToPlay()
+                    audioPlayer.play()
+                } catch{
+                    print("Error getting the audio file")
+                }
+                player!.shouldResetPosition = true
         }
         
         if ((firstBody.categoryBitMask & ObjectType.Player != 0) &&

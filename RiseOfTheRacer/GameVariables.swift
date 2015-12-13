@@ -19,7 +19,8 @@ struct ObjectType {
     static let Player:   UInt32 =  0b1         // 1
     static let Tile:     UInt32 =  0b10        // 2
     static let Spike:    UInt32 =  0b100       // 4
-    static let Teleport: UInt32 =  0b1000      // 8
+    static let Spike2:   UInt32 =  0b1000      // 8
+    static let Teleport: UInt32 =  0b10000     // 16
 }
 
 enum CharacterState //Manages the state of the Character
