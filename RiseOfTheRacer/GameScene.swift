@@ -26,7 +26,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var player:Player?
     
     //Level
-    var level:Int?
+    var level:Int = 0
+    
+    //Difficulty
+    var difficulty:Int = 0
     
     //Tiles
     var tiles:[Tile]?
@@ -110,6 +113,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         sceneCamera.runAction(action)
         player!.Update()
         timerLabel.text = String(format: "%02d:%02d:%02d", counter/6000, (counter/100)%60, counter%100)
+        
+        //player!.myDebugLabel.text = String(level)
     }
     
     func updateTime(){
@@ -131,8 +136,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             (secondBody.categoryBitMask & ObjectType.Tile != 0)) {
                 if (firstBody.node?.position.y > secondBody.node?.position.y){
                     player!.jumping = false
-                    player!.physicsBody?.affectedByGravity = false
-                    player!.position.y += 30.0
+                    //player!.physicsBody?.affectedByGravity = false
+                    //player!.position.y += 30.0
                 }
         }
         
@@ -142,6 +147,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                     player!.shouldResetPosition = true
                 }
         }
+        
         
         if ((firstBody.categoryBitMask & ObjectType.Player != 0) &&
             (secondBody.categoryBitMask & ObjectType.Teleport != 0)) {
@@ -153,42 +159,42 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 
                 switch(level)
                 {
-                case 1?:
+                case 1:
                     tiles = map.ReadMap(GameMaps.map2)
                     for tile in tiles!{
                         self.addChild(tile)
                     }
                     player!.shouldResetPosition = true
                     break;
-                case 2?:
+                case 2:
                     tiles = map.ReadMap(GameMaps.map3)
                     for tile in tiles!{
                         self.addChild(tile)
                     }
                     player!.shouldResetPosition = true
                     break;
-                case 3?:
+                case 3:
                     tiles = map.ReadMap(GameMaps.map4)
                     for tile in tiles!{
                         self.addChild(tile)
                     }
                     player!.shouldResetPosition = true
                     break;
-                case 4?:
+                case 4:
                     tiles = map.ReadMap(GameMaps.map5)
                     for tile in tiles!{
                         self.addChild(tile)
                     }
                     player!.shouldResetPosition = true
                     break;
-                case 5?:
+                case 5:
                     tiles = map.ReadMap(GameMaps.map6)
                     for tile in tiles!{
                         self.addChild(tile)
                     }
                     player!.shouldResetPosition = true
                     break;
-                case 6?:
+                case 6:
                     tiles = map.ReadMap(GameMaps.map7)
                     for tile in tiles!{
                         self.addChild(tile)
@@ -209,7 +215,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     func didEndContact(contact: SKPhysicsContact) {
-        player!.physicsBody?.affectedByGravity = true
+        //player!.physicsBody?.affectedByGravity = true
         
         //player!.myDebugLabel.text = "EndedContact"
     }

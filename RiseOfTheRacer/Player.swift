@@ -42,7 +42,7 @@ class Player: SKSpriteNode {
         self.touchList = []
         
         self.runAcl = 100.0
-        self.jumpForce = 5000.0
+        self.jumpForce = 600.0
         
         myDebugLabel = SKLabelNode(fontNamed:"Arial")
         myDebugLabel.fontSize = 45
@@ -82,8 +82,10 @@ class Player: SKSpriteNode {
                 print("Error getting the audio file")
             }
             
+            print(String(position.y))
+            
             jumping = true
-            physicsBody?.applyForce(CGVector(dx: 0.0, dy: jumpForce))
+            physicsBody?.velocity.dy = jumpForce
         }
         
         else {
@@ -137,7 +139,6 @@ class Player: SKSpriteNode {
             position = spawnPoint
             shouldResetPosition = false
         }
-        
         
         if running == true && facingRight == true {
             physicsBody?.applyForce(CGVector(dx: runAcl, dy: 0.0))
