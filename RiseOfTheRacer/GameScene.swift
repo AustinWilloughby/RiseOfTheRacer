@@ -85,6 +85,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         player = Player(pos: CGPoint(x: 100.0, y: 200.0))
         self.addChild(player!)
         
+        
         self.addChild(player!.myDebugLabel)
         sceneCamera.addChild(timerLabel)
         
