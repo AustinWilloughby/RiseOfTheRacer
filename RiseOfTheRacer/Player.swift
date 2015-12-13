@@ -33,8 +33,14 @@ class Player: SKSpriteNode {
     let jetpackNoise = NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("jetpack", ofType: "wav")!)
     var audioPlayer = AVAudioPlayer()
     
+    
+    var playerRunFrames : [SKTexture]!
+    var playerIdleFrames : [SKTexture]!
+    var playerJumpFrames : [SKTexture]!
+    
     init(pos:CGPoint)
     {
+        
         self.playerTexture = SKTexture(imageNamed: "Player")
         
         self.running = false
