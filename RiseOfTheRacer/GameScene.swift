@@ -8,7 +8,7 @@
 //  Implementation based off code found here: http://swiftalicio.us/2014/09/2d-camera-in-spritekit/
 
 
-
+import AVFoundation
 import SpriteKit
 
 class GameScene: SKScene, SKPhysicsContactDelegate {
@@ -25,11 +25,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     //Player Instance
     var player:Player?
     
+    //Sounds
+    let deathNoise = NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("death", ofType: "wav")!)
+    let teleportNoise = NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("teleport", ofType: "wav")!)
+    var audioPlayer = AVAudioPlayer()
+    
     //Level
     var level:Int = 0
-    
-    //Difficulty
-    var difficulty:Int = 0
+    var levelLabel:SKLabelNode = SKLabelNode(fontNamed:"Arial")
     
     //Tiles
     var tiles:[Tile]?
@@ -53,8 +56,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             
             view.showsPhysics = true
             
-            level = 0
-            
             self.anchorPoint = CGPoint(x: 0.5, y: 0.5)
             self.world = SKNode()
             self.world?.name = "world"
@@ -66,34 +67,60 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             self.overlay?.zPosition = 10
             self.overlay?.name = "overlay"
             addChild(self.overlay!)
+            
+            // Create map
+            backgroundColor = SKColor.blackColor()
+            tiles = map.ReadMap(GameMaps.menuMap)
+            for tile in tiles!{
+                self.addChild(tile)
+            }
+            
+            var tempPos:CGPoint = CGPoint(x: 0.0, y: 100.0)
+            
+            // If there is a spawn tile
+            for tile in tiles! {
+                if tile.tileID == "X" {
+                    // Update spawn point
+                    tempPos = CGPoint(x: tile.position.x, y: tile.position.y)
+                    camera?.position = tempPos
+                }
+            }
+            
+            player = Player(pos: tempPos)
+            player?.zPosition = 1
+            self.addChild(player!)
+            
+            // Create level label
+            level = 0
+            levelLabel.horizontalAlignmentMode = SKLabelHorizontalAlignmentMode.Left
+            levelLabel.verticalAlignmentMode = SKLabelVerticalAlignmentMode.Top
+            levelLabel.fontSize = 45
+            let screenSize: CGRect = UIScreen.mainScreen().bounds
+            levelLabel.position = CGPoint(x: -screenSize.width / 2 + 10, y: screenSize.height / 2 - 10)
+            levelLabel.zPosition = 1
+            levelLabel.text = "Level: " + String(level)
+            
+            // Create timer
+            timer = NSTimer.scheduledTimerWithTimeInterval(0.01, target: self, selector: "updateTime", userInfo: nil, repeats: true)
+            timerLabel.horizontalAlignmentMode = SKLabelHorizontalAlignmentMode.Left
+            timerLabel.verticalAlignmentMode = SKLabelVerticalAlignmentMode.Top
+            timerLabel.fontSize = 45
+            timerLabel.position = CGPoint(x: -screenSize.width / 2 + 10, y: screenSize.height / 2 - 55)
+            timerLabel.zPosition = 1
+            
+            // Add labels
+            self.addChild(player!.myDebugLabel)
+            sceneCamera.addChild(timerLabel)
+            sceneCamera.addChild(levelLabel)
+            
+            // Add camera
+            self.addChild(sceneCamera)
+            self.camera = sceneCamera
         }
-        
-        backgroundColor = SKColor.blackColor()
-        tiles = map.ReadMap(GameMaps.menuMap)
-        for tile in tiles!{
-            self.addChild(tile)
-        }
-        
-        timer = NSTimer.scheduledTimerWithTimeInterval(0.01, target: self, selector: "updateTime", userInfo: nil, repeats: true)
-        timerLabel.horizontalAlignmentMode = SKLabelHorizontalAlignmentMode.Left
-        timerLabel.verticalAlignmentMode = SKLabelVerticalAlignmentMode.Top
-        timerLabel.fontSize = 45
-        let screenSize: CGRect = UIScreen.mainScreen().bounds
-        timerLabel.position = CGPoint(x: -screenSize.width / 2 + 10, y: screenSize.height / 2 - 10)
-        timerLabel.zPosition = 1
-        
-        player = Player(pos: CGPoint(x: 100.0, y: 200.0))
-        self.addChild(player!)
-        
-        self.addChild(player!.myDebugLabel)
-        sceneCamera.addChild(timerLabel)
-        
-        self.addChild(sceneCamera)
-        self.camera = sceneCamera
     }
     
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
-       player!.touchesBegan(touches, withEvent: event)
+        player!.touchesBegan(touches, withEvent: event)
     }
     
     override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
@@ -105,7 +132,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         node.parent!.position = CGPoint(x:(node.parent?.position.x)! - cameraPosInScene.x, y:(node.parent?.position.y)! - cameraPosInScene.y)
     }
-        
+    
     override func update(currentTime: CFTimeInterval) {
         deltaTime = currentTime - lastUpdateTime
         lastUpdateTime = currentTime
@@ -113,6 +140,17 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         sceneCamera.runAction(action)
         player!.Update()
         timerLabel.text = String(format: "%02d:%02d:%02d", counter/6000, (counter/100)%60, counter%100)
+        
+        if player!.shouldUpdateSpawnpoint {
+            for tile in tiles! {
+                if tile.tileID == "X" {
+                    // Update spawn point tile position
+                    tile.position = player!.position
+                    tile.position.y += 10
+                    player!.shouldUpdateSpawnpoint = false
+                }
+            }
+        }
         
         //player!.myDebugLabel.text = String(level)
     }
@@ -144,14 +182,19 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         if ((firstBody.categoryBitMask & ObjectType.Player != 0) &&
             (secondBody.categoryBitMask & ObjectType.Spike != 0)) {
                 if (firstBody.node?.position.y > secondBody.node?.position.y){
+                    do {
+                        self.audioPlayer = try AVAudioPlayer(contentsOfURL: deathNoise)
+                        audioPlayer.prepareToPlay()
+                        audioPlayer.play()
+                    } catch{
+                        print("Error getting the audio file")
+                    }
                     player!.shouldResetPosition = true
                 }
         }
         
-        
         if ((firstBody.categoryBitMask & ObjectType.Player != 0) &&
             (secondBody.categoryBitMask & ObjectType.Teleport != 0)) {
-                
                 for tile in tiles!{
                     tile.removeFromParent()
                 }
@@ -160,65 +203,66 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 switch(level)
                 {
                 case 0:
-                    tiles = map.ReadMap(GameMaps.menuMap)
-                    for tile in tiles!{
-                        self.addChild(tile)
-                    }
-                    player!.shouldResetPosition = true
+                    tiles = map.ReadMap(GameMaps.map1)
+                    loadNewMap()
                     break
                 case 1:
                     tiles = map.ReadMap(GameMaps.map2)
-                    for tile in tiles!{
-                        self.addChild(tile)
-                    }
-                    player!.shouldResetPosition = true
+                    loadNewMap()
                     break;
                 case 2:
                     tiles = map.ReadMap(GameMaps.map3)
-                    for tile in tiles!{
-                        self.addChild(tile)
-                    }
-                    player!.shouldResetPosition = true
+                    loadNewMap()
                     break;
                 case 3:
                     tiles = map.ReadMap(GameMaps.map4)
-                    for tile in tiles!{
-                        self.addChild(tile)
-                    }
-                    player!.shouldResetPosition = true
+                    loadNewMap()
                     break;
                 case 4:
                     tiles = map.ReadMap(GameMaps.map5)
-                    for tile in tiles!{
-                        self.addChild(tile)
-                    }
-                    player!.shouldResetPosition = true
+                    loadNewMap()
                     break;
                 case 5:
                     tiles = map.ReadMap(GameMaps.map6)
-                    for tile in tiles!{
-                        self.addChild(tile)
-                    }
-                    player!.shouldResetPosition = true
+                    loadNewMap()
                     break;
                 case 6:
                     tiles = map.ReadMap(GameMaps.map7)
-                    for tile in tiles!{
-                        self.addChild(tile)
-                    }
-                    player!.shouldResetPosition = true
+                    loadNewMap()
                     break
                 default:
                     tiles = map.ReadMap(GameMaps.map1)
-                    for tile in tiles!{
-                        self.addChild(tile)
-                    }
-                    player!.shouldResetPosition = true
+                    loadNewMap()
                     break
                 }
+                
+                do {
+                    self.audioPlayer = try AVAudioPlayer(contentsOfURL: teleportNoise)
+                    audioPlayer.prepareToPlay()
+                    audioPlayer.play()
+                } catch{
+                    print("Error getting the audio file")
+                }
+                
+                level++
+                levelLabel.text = "Level: " + String(level)
         }
         
         //player!.myDebugLabel.text = "BeganContact"
+    }
+    
+    func loadNewMap(){
+        for tile in tiles!{
+            self.addChild(tile)
+        }
+        for tile in tiles! {
+            if tile.tileID == "X" {
+                // Update spawn point
+                player!.spawnPoint = CGPoint(x: tile.position.x, y: tile.position.y)
+                camera?.position = CGPoint(x: tile.position.x, y: tile.position.y)
+            }
+        }
+        player!.shouldResetPosition = true
     }
     
     func didEndContact(contact: SKPhysicsContact) {

@@ -15,8 +15,12 @@ class Player: SKSpriteNode {
     
     var spawnPoint:CGPoint
     var shouldResetPosition:Bool
+    var shouldAdjust:Bool
+    var shouldUpdateSpawnpoint:Bool
     
     var playerTexture:SKTexture
+    
+    var Difficulty:Int
     
     var running:Bool
     var facingRight:Bool
@@ -26,9 +30,7 @@ class Player: SKSpriteNode {
     
     var myDebugLabel:SKLabelNode
     
-    let deathNoise = NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("death", ofType: "wav")!)
     let jetpackNoise = NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("jetpack", ofType: "wav")!)
-    let teleportNoise = NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("teleport", ofType: "wav")!)
     var audioPlayer = AVAudioPlayer()
     
     init(pos:CGPoint)
@@ -51,6 +53,10 @@ class Player: SKSpriteNode {
         
         self.spawnPoint = pos
         self.shouldResetPosition = false
+        self.shouldAdjust = false
+        self.shouldUpdateSpawnpoint = false
+        
+        self.Difficulty = 0
         
         super.init(texture: texture, color: UIColor.clearColor(), size: texture.size())
         
@@ -73,7 +79,12 @@ class Player: SKSpriteNode {
             touchList.append(touches.first!)
         }
         
-        if touchList.count > 1 && jumping == false{
+        if touchList.count > 3 && jumping == false {
+            spawnPoint = position
+            shouldUpdateSpawnpoint = true
+        }
+            
+        else if touchList.count > 1 && jumping == false{
             do{
                 self.audioPlayer = try AVAudioPlayer(contentsOfURL: jetpackNoise)
                 audioPlayer.prepareToPlay()
@@ -81,8 +92,6 @@ class Player: SKSpriteNode {
             }catch{
                 print("Error getting the audio file")
             }
-            
-            print(String(position.y))
             
             jumping = true
             physicsBody?.velocity.dy = jumpForce
@@ -128,17 +137,12 @@ class Player: SKSpriteNode {
         
         if shouldResetPosition
         {
-            do {
-                self.audioPlayer = try AVAudioPlayer(contentsOfURL: deathNoise)
-                audioPlayer.prepareToPlay()
-                audioPlayer.play()
-            } catch{
-                print("Error getting the audio file")
-            }
             physicsBody?.affectedByGravity = true
             position = spawnPoint
             shouldResetPosition = false
         }
+        
+        
         
         if running == true && facingRight == true {
             physicsBody?.applyForce(CGVector(dx: runAcl, dy: 0.0))

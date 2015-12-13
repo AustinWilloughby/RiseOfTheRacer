@@ -58,6 +58,10 @@ class MapHandler{
                          tempTile = Teleporter(pos: CGPoint(x: x * GameVariables.tileSize, y: (ySize - y) * GameVariables.tileSize), textureName: "Teleporter", id:"E")
                          tiles.append(tempTile)
                         break
+                    case "X":
+                        tempTile = Tile(pos: CGPoint(x: x * GameVariables.tileSize, y: (ySize - y) * GameVariables.tileSize), textureName: "Spawn", id:"X")
+                        tiles.append(tempTile)
+                        break
                     default:
                         break
                 }

@@ -10,7 +10,7 @@ import SpriteKit
 import Foundation
 
 class Tile: GamePiece {
-    private var tileID:String
+    var tileID:String
     
     init(pos:CGPoint, textureName:String, id:String)
     {
@@ -22,11 +22,13 @@ class Tile: GamePiece {
         xScale = scaleFactor
         yScale = scaleFactor
         
-        self.physicsBody = SKPhysicsBody(rectangleOfSize: CGSize(width: Double(GameVariables.tileSize), height: Double(GameVariables.tileSize)))
-        self.physicsBody?.dynamic = false
-        self.physicsBody?.usesPreciseCollisionDetection = true
-        self.physicsBody?.categoryBitMask = ObjectType.Tile
-        self.physicsBody?.contactTestBitMask = ObjectType.Player
+        if id != "X" {
+            self.physicsBody = SKPhysicsBody(rectangleOfSize: CGSize(width: Double(GameVariables.tileSize), height: Double(GameVariables.tileSize)))
+            self.physicsBody?.dynamic = false
+            self.physicsBody?.usesPreciseCollisionDetection = true
+            self.physicsBody?.categoryBitMask = ObjectType.Tile
+            self.physicsBody?.contactTestBitMask = ObjectType.Player
+        }
     }
     
     required init?(coder aDecoder: NSCoder) {
