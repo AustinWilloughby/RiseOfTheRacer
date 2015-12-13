@@ -70,7 +70,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             
             // Create map
             backgroundColor = SKColor.blackColor()
-            tiles = map.ReadMap(GameMaps.menuMap)
+            tiles = map.ReadMap(GameMaps.map1)
             for tile in tiles!{
                 self.addChild(tile)
             }
@@ -91,7 +91,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             self.addChild(player!)
             
             // Create level label
-            level = 0
+            level = 1
             levelLabel.horizontalAlignmentMode = SKLabelHorizontalAlignmentMode.Left
             levelLabel.verticalAlignmentMode = SKLabelVerticalAlignmentMode.Top
             levelLabel.fontSize = 45
@@ -241,6 +241,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 case 6:
                     tiles = map.ReadMap(GameMaps.map7)
                     loadNewMap()
+                    break
+                case 7:
+                    player!.myDebugLabel.text = "You Win!"
                     break
                 default:
                     tiles = map.ReadMap(GameMaps.map1)

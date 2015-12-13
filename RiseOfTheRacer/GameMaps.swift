@@ -186,7 +186,7 @@ struct GameMaps {
     
     static let map4:[String] =
     [
-        "40, 30",
+        "40,30",
         "WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW",
         "WWWWWWWWWWWWWWWWP>---------------------W",
         "W---------------P>---------------------W",
@@ -239,7 +239,7 @@ struct GameMaps {
         "WPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP-W",
         "W------------------------<W>---------------------W",
         "W------------------------<W>---------------------W",
-        "W--------PPPPPPPPPPPP>--------<PPPPPPPPPP--------W",
+        "W--------PPPPPPPPPPPP---------<PPPPPPPPPP--------W",
         "W------PPP----------P>--------<P--------PPP------W",
         "W----PPP------------P>-PPPPPP-<P----------PPP----W",
         "WE-PPP--------------PSSSSSSSSSSP------------PPP--W",

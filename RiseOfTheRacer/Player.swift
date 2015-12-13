@@ -40,7 +40,6 @@ class Player: SKSpriteNode {
     
     init(pos:CGPoint)
     {
-        
         self.playerTexture = SKTexture(imageNamed: "Player")
         
         self.running = false
@@ -76,6 +75,14 @@ class Player: SKSpriteNode {
         
         self.xScale = 0.4
         self.yScale = 0.8
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector(removeTouches()), name: UIApplicationWillResignActiveNotification, object: nil)
+    }
+    
+    func removeTouches(){
+        touchList.removeAll()
+        print("Removed touches")
+
     }
     
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
@@ -85,7 +92,7 @@ class Player: SKSpriteNode {
             touchList.append(touches.first!)
         }
         
-        if touchList.count > 3 && jumping == false {
+        if touchList.count > 2 && jumping == false {
             spawnPoint = position
             shouldUpdateSpawnpoint = true
         }
